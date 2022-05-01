@@ -1,0 +1,29 @@
+.top-nav-general-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 40px;
+    background: #181818;
+    padding: 0 30px;
+}
+.top-nav-left,
+.top-nav-right{
+    display: flex;
+    flex-direction: row;
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+    color: whitesmoke;
+    cursor: pointer;
+    margin-left: -10px;
+}
+
+.top-nav-right span{
+    color: whitesmoke;
+    margin-right: 20px;
+}

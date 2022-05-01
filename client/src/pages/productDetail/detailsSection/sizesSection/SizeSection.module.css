@@ -1,0 +1,25 @@
+.size-radio-btn{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 50%;
+    margin-left: 10px;
+    line-height: 35px;
+    text-transform: uppercase;
+    color: #383838;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px hsl(0 0% 0% / 20%);
+    transition: all 300ms ease-in-out;
+}
+
+.size-radio-btn:hover {
+    background: #383838;
+    color: #fff;
+}
+
+.size-radio-btn.checked{
+    background: #383838;
+    color: #fff;
+}

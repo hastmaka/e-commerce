@@ -1,0 +1,34 @@
+.menu-general-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--swatch_1);
+    width: 300px;
+    height: 100vh;
+    padding: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+    z-index: 100;
+}
+
+.gc-active {
+    transform: translateX(-300px);
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0 1rem 0;
+    margin-bottom: -10px;
+    list-style: none;
+}
+
+.links-container li {
+    display: flex;
+    align-items: center;
+}

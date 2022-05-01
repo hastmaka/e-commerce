@@ -1,0 +1,22 @@
+.price-formatted-container {
+    display: flex;
+    align-items: baseline;
+}
+
+.price {
+    font-weight: 600;
+}
+
+.decimal {
+    position: relative;
+    font-weight: 600;
+    font-size: 12px;
+    top: -0.3rem;
+}
+
+.currency-symbol {
+    position: relative;
+    font-weight: 600;
+    font-size: 12px;
+    top: -0.5rem;
+}

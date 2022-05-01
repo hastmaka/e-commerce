@@ -1,0 +1,30 @@
+.checkout-shipping-payment {
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+    gap: var(--gap);
+}
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: bold;
+}
+.title a {
+    margin-left: 4px;
+    font-size: 10px;
+    text-decoration: none;
+}
+.checkout-shipping-payment div{
+    width: 100%;
+}
+.shipping div, .payment-method div{
+    margin: 5px 0;
+}
+.payment-method input{
+    width: 40%;
+    margin-right: 10px;
+}

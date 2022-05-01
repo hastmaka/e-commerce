@@ -1,0 +1,135 @@
+.nav {
+    width: 100%;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    /*left: 386px;*/
+    right: 100%;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(56, 56, 56, 0.59);
+    transform: translateX(0);
+    transition: transform .3s ease-in-out;
+    z-index: 99;
+    overscroll-behavior: contain;
+}
+
+.menu-overlay-active {
+    transform: translateX(0);
+    backdrop-filter: blur(10px);
+    left: 0;
+}
+
+.brand-logo {
+    height: 60px;
+}
+
+.nav-items {
+    /*position: relative;*/
+    /*right: -30px;*/
+    display: flex;
+    align-items: center;
+    /*background: rgba(56, 56, 56, 0.55);*/
+    padding: 12px;
+    /*border-top-left-radius: 10px;*/
+    /*border-bottom-left-radius: 10px;*/
+    /*transition: 300ms all ease-in-out;*/
+}
+
+.search {
+    width: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.search-box {
+    width: 80%;
+    height: 40px;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid #d1d1d1;
+    text-transform: capitalize;
+    background: none;
+    color: #a9a9a9;
+    outline: none;
+}
+
+.search-btn {
+    width: 20%;
+    height: 40px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #383838;
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.search-box::placeholder {
+    color: #a9a9a9;
+}
+
+.login-logout-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nav-items > div {
+    margin-left: 20px;
+}
+
+.nav-items a:hover {
+    border-bottom: transparent !important;
+}
+
+.nav-icon {
+    width: 30px;
+    height: 30px;
+    color: var(--swatch_3);
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.nav-icon:hover {
+    color: var(--swatch_2);
+}
+
+/*.nav-items a:after {*/
+/*    content: '';*/
+/*    display: block;*/
+/*    width: 0;*/
+/*    height: 1px;*/
+/*    background: var(--swatch_1);*/
+/*    transition: width .3s;*/
+/*}*/
+
+/*.nav-items a:hover:after {*/
+/*    width: 30px;*/
+/*}*/
+
+.badge {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--swatch_1);
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    color: var(--swatch_6);
+    font-weight: 600;
+    margin: -50px 5px 7px 22px;
+}

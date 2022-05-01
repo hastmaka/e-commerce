@@ -1,0 +1,26 @@
+.product-details-general-container{
+    width: 100%;
+    padding: 60px;
+    background: var(--baseBgColor);
+    display: flex;
+    justify-content: center;
+}
+.product-details-general-container-fix {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: var(--max-width);
+    background: var(--bgColor);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    gap: 40px;
+
+}
+
+.first-section-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 0 10%;
+}
+

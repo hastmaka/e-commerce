@@ -1,0 +1,11 @@
+.detail-description{
+    display: flex;
+    flex-direction: column;
+    padding: 0 10%;
+    text-transform: capitalize;
+}
+
+.detail-description p {
+    text-indent: 20px;
+    text-align: justify;
+}

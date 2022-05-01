@@ -1,0 +1,18 @@
+FIX
+________________________________________________________
+product detail comes with average rating too.
+when reload in cart and click cart add the quantity again
+
+
+
+Implement
+________________________________________________________
+Cart
+delete update save_for_later
+checkout
+quantity
+
+Profile
+
+Toast system
+react-toastify

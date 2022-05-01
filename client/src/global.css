@@ -1,0 +1,60 @@
+:root {
+    --border: #ececec;
+    --baseBgColor: #EAEDED;
+    --bgColor: #ffffff;
+    --price: #0F1111;
+
+    --font-size-des: 12px;
+    --aColor: #3d3dcb;
+    --placeholderColor: #888888;
+
+    --smoothT: 200ms ease-in-out;
+
+    --gap: 10px;
+    --border-radius: 5px;
+    --transition: 200ms ease-in-out;
+    --max-width: 1366px !important;
+
+    --swatch_1: #141516;
+    --swatch_2: #fefefe;
+    --swatch_3: #a3a3a4;
+    --swatch_4: #9d484b;
+    --swatch_5: #cfcfd0;
+    --swatch_6: #dd101d;
+
+    --swatch_7: #1f2021;
+    --swatch_8: #d0d0d0;
+    --swatch_9: #a5a5a5;
+    --swatch_10: #948775;
+    --swatch_11: #ecb72d;
+    --swatch_12: #d0a22c;
+
+
+}
+
+
+
+/*general*/
+/*a {*/
+/*    text-decoration: none !important;*/
+/*    border-bottom: 1px solid transparent;*/
+/*    color: var(--aColor);*/
+/*}*/
+
+/*a:hover {*/
+/*    border-bottom: 1px solid darkslateblue !important;*/
+/*}*/
+span {
+    text-rendering: optimizeLegibility !important;
+}
+
+input {
+    outline: none !important;
+    border: 1px solid var(--border) ;
+    /*border-radius: 5px ;*/
+    padding: 10px;
+}
+input:focus{
+    box-shadow: 2px 2px 5px -5px rgba(0,0,0,0.75) ;
+    border: 1px solid #91b2ea ;
+}

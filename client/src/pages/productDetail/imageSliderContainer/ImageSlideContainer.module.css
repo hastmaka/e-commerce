@@ -1,0 +1,72 @@
+.image-slider{
+    position: relative;
+    align-items: center;
+    width: 450px;
+    height: 550px;
+    padding: 10px;
+    display: flex;
+    /* border: 1px solid black; */
+    flex-direction: column;
+    /*justify-content: center;*/
+}
+
+.image-slider img {
+    max-width:100%;
+    max-height:100%;
+    border-radius: 5px;
+}
+
+.discount-badge-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: absolute;
+    top: 7px;
+    right: 17px;
+}
+
+.discount-badge {
+    left: 0;
+    top: 30px;
+    transform: rotate(45deg);
+    position: absolute;
+    display: block;
+    width: 200px;
+    padding: 5px 0;
+    background-color: rgba(35, 190, 167, 0.76);
+    box-shadow: 0 5px 10px rgba(19, 19, 19, 0.6);
+    color: #e14343;
+    text-shadow: 0 1px 1px rgba(0,0,0,.2);
+    text-align: center;
+    border: 2px dotted #fff;
+    outline : 5px solid rgba(5, 115, 111, 0.68);
+}
+
+
+.product-images{
+    position: relative;
+    bottom: 115px;
+    width: 90%;
+    background: #fff;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 100px;
+    grid-gap: 10px;
+    padding: 10px;
+    z-index: 10;
+}
+
+.product-images img{
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+
+
+
+.product-images img.active{
+    opacity: 0.5;
+}

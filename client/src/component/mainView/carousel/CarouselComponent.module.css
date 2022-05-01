@@ -1,0 +1,22 @@
+.carousel-general-container {
+    /*height: 100%;*/
+    /*max-width: 1150px;*/
+    z-index: 10;
+}
+
+.carousel-general-container img {
+    filter: brightness(70%);
+}
+
+.carousel-offers {
+    position: absolute;
+    bottom: 50%;
+    right: 20%;
+
+    background: rgba(245, 245, 245, 0.41);
+    border: 1px solid black;
+    z-index: 50;
+}
+.carousel-offers h1 {
+    color: whitesmoke;
+}

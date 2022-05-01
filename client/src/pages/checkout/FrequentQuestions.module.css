@@ -1,0 +1,9 @@
+.frequent-questions {
+    background: #e8e8e8;
+    padding: 15px;
+    border-radius: 0 0 5px 5px;
+    border: 1px solid var(--border);
+}
+.frequent-questions div{
+    margin-top: 5px;
+}

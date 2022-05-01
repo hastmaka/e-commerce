@@ -1,0 +1,25 @@
+.profile-general-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ececec;
+
+}
+
+.profile-general-list button {
+    margin: 0 5px 0 5px;
+    background: none;
+    color: #40916c;
+    border: none;
+    padding: 0;
+    font-size: var(--font-size-des);
+    cursor: pointer;
+    outline: inherit;
+    border-bottom: 1px solid transparent;
+}
+
+.profile-general-list button:hover {
+    color: #00341d;
+    border-bottom: 1px solid #40916c;
+}

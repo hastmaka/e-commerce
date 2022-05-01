@@ -1,0 +1,41 @@
+.hero-section-general-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 500px;
+
+}
+
+.hero-section-general-container-fix {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 50px;
+    width: 80%;
+    /*border: 1px solid black;*/
+}
+
+.hero-section-left-side {
+    width: 30%;
+}
+
+.hero-section-right-side img {
+    width: 100%;
+    border-radius: 5px;
+    /*box-shadow: 19.8px 25px 161.2px rgb(213, 200, 153),*/
+    /*33.9px 42.7px 17.5px rgba(155, 155, 110, 0.51),*/
+    /*47.4px 59.7px 0.4px rgba(196, 197, 135, 0.03);*/
+
+    /*transition: all 300ms ease-in;*/
+}
+
+.hero-section-right-side {
+    width: 30%;
+    /*padding: 50px 100px;*/
+}
+
+.read-more-btn {
+    border: 1px solid #c5c5c5;
+}

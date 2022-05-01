@@ -1,0 +1,141 @@
+.login-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100vh;
+    background: var(--baseBgColor);
+}
+
+.login-form {
+    border: 1px solid var(--border);
+    background: var(--bgColor);
+    box-shadow: 5px 5px 10px -10px rgba(101, 98, 98, 0.56);
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+}
+
+.login-form input::placeholder {
+    color: var(--placeholderColor);
+}
+
+.login-form input:focus::placeholder {
+    color: #cecece;
+}
+
+.login-form-fields {
+    display: flex;
+    flex-direction: column;
+
+    margin: 26px 0;
+}
+
+.login-form-fields input {
+    width: 100%;
+    border: transparent;
+    border-bottom: 1px solid var(--swatch_3);
+}
+
+.login-form-fields span,
+.address span,
+.phone span{
+    color: red;
+    font-size: 12px;
+    text-align: center;
+}
+
+.login-form-fields:nth-child(3) a {
+    font-size: 14px;
+}
+
+.login-form-fields-links{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin: 15px 0;
+}
+
+.login-form-fields-links a {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-bottom: 1px solid transparent;
+    transition: var(--smoothT);
+}
+
+.login-form-fields-links a:hover {
+    border-bottom: 1px solid #258061;
+}
+
+.login-form-fields-btn a:hover {
+    color: blue;
+}
+
+.forgot-pass-help {
+    margin: 15px 0;
+    font-size: 12px;
+}
+
+.login-form-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.cancel-btn {
+    padding: 9px 12px;
+    margin-right: 10px;
+    background-color: var(--bs-red);
+    color: #e1e1e1;
+    cursor: pointer !important;
+    border: 1px solid #9d9d9d;
+    border-radius: 0.25rem !important;
+    transition: all 200ms ease-in-out;
+    text-decoration: none;
+}
+
+/*fix because this btn is an a tag*/
+.cancel-btn:hover {
+    color: #fff;
+    background-color: var(--bs-danger);
+    border-color: #a72828;
+}
+
+.login-btn {
+    background-color: #4dbb71;
+    border-radius: 5px;
+}
+
+.status-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+}
+
+/*additional fields */
+.additional-fields-sign-up {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.first-last-name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 26px;
+}
+
+.first-last-name input {
+    width: 49%;
+}
+
+.login-form input[type=phone] {
+    margin-top: -26px;
+}
