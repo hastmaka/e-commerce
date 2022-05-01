@@ -1,6 +1,7 @@
-import {Button, Modal} from "react-bootstrap";
+import {Modal} from "react-bootstrap";
 
 const ModalComponent = (props) => {
+  // debugger
   return (
     <Modal
       {...props}
@@ -22,7 +23,7 @@ const ModalComponent = (props) => {
         </p>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        {/*<Button onClick={props.onHide}>Close</Button>*/}
       </Modal.Footer>
     </Modal>
   )

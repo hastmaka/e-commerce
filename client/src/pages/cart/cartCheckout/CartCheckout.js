@@ -1,6 +1,6 @@
 import classes from './CartCheckout.module.css';
 import RelatedItems from "./relatedItems/RelatedItems";
-import PriceFormatted from "../../../component/mainView/priceFormat/PriceFormatted";
+import PriceFormatted from "../../../component/priceFormat/PriceFormatted";
 import {NavLink} from 'react-router-dom';
 
 const CartCheckout = ({cartItems, totalPrice, totalQuantity}) => {

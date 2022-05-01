@@ -19,10 +19,12 @@ const Nav = ({data}) => {
   const location = useLocation();
   const totalQuantity = useSelector(store => store.cart.totalQuantity);
   const loginStore = useSelector(store => store.login);
+  const userIsLoggedIn = !!loginStore.token;
+
+  /* close sideNav on outside click*/
   const [open, setOpen] = useState(false);
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
-  const userIsLoggedIn = !!loginStore.token;
 
   const emptyCart = () => {
     dispatch(cartSliceActions.emptyCart({location: location.pathname}))

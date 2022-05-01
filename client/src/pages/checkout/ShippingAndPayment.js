@@ -1,5 +1,5 @@
 import classes from './ShippingAndPayment.module.css';
-import Button from "../../component/mainView/button/Button";
+import Button from "../../component/button/Button";
 
 const ShippingAndPayment = () => {
   return (

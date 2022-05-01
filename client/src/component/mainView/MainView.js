@@ -4,7 +4,7 @@ import classes from './MainView.module.css';
 import HeroSection from "./heroSection/HeroSection";
 import SectionProduct from "./sectionProduct/SectionProduct";
 import CollectionContainer from "./collectionContainer/CollectionContainer";
-import CarouselComponent from "./carousel/CarouselComponent";
+import CarouselComponent from "../carousel/CarouselComponent";
 
 const MainView = () => {
 

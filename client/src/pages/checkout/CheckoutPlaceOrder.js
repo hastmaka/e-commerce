@@ -1,7 +1,7 @@
 import classes from './CheckoutPlaceOrder.module.css';
-import Button from "../../component/mainView/button/Button";
+import Button from "../../component/button/Button";
 import {useSelector} from "react-redux";
-import PriceFormatted from "../../component/mainView/priceFormat/PriceFormatted";
+import PriceFormatted from "../../component/priceFormat/PriceFormatted";
 
 const CheckoutPlaceOrder = () => {
   const totalQuantity = useSelector(state => state.cart.totalQuantity);

@@ -2,6 +2,7 @@ import {useSelector} from "react-redux";
 import classes from "./ProfileGeneral.module.css";
 import {useState} from "react";
 import ModalComponent from "../../../component/modal/ModalComponent";
+import Button from "../../../component/button/Button";
 
 const ProfileGeneral = () => {
   const [showModal, setShowModal] = useState(false);
@@ -14,7 +15,7 @@ const ProfileGeneral = () => {
   ];
 
   const handleTempData = (data) => {
-    // debugger
+    debugger
     setShowModal(true)
   }
 
@@ -25,16 +26,17 @@ const ProfileGeneral = () => {
         show={showModal}
         onHide={() => setShowModal(false)}
       />
+          <div className={classes['btn-container']}>
+            <Button
+              name='Edit'
+              handler={() => handleTempData(items)}
+            />
+          </div>
       {items.map(item =>
         <div key={item.name} className={classes['profile-general-list']}>
           <div>
             <span>{item.name}: </span>
             <span>{item.user}</span>
-          </div>
-          <div>
-            <button
-              onClick={(e) => handleTempData(items)}
-            >Edit</button>
           </div>
         </div>
       )}

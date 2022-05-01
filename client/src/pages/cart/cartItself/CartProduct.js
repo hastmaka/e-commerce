@@ -2,7 +2,7 @@ import classes from './CartProduct.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import {cartSliceActions} from "../cart-slice";
 import {useEffect} from "react";
-import PriceFormatted from "../../../component/mainView/priceFormat/PriceFormatted";
+import PriceFormatted from "../../../component/priceFormat/PriceFormatted";
 
 const CartProduct = ({color, imageUrl, price, quantity, discount, size, title}) => {
   const dispatch = useDispatch();

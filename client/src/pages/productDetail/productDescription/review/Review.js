@@ -7,9 +7,11 @@ import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {detailProductSliceActions} from "../../DetailProduct-slice";
 import {fetchData} from "../../../../helper/Api";
+import {useNavigate} from "react-router-dom";
 
 const Review = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const reviews = useSelector(store => store.detailProduct.reviews);
   const product = useSelector(store => store.detailProduct.detailData);
   const loginStore = useSelector(store => store.login);
@@ -36,7 +38,8 @@ const Review = () => {
         review_rating: ratingDefault
       }));
     } else {
-      alert('Please Log in First to submit a review. Thanks')
+      alert('Please Log in First to submit a review. Thanks');
+      navigate('/login');
     }
     reset();
     setRatingDefault(0)
@@ -67,19 +70,6 @@ const Review = () => {
           rating_value={ratingDefault}
           readonly={false}
         />
-        {/*<div className={global['login-form-fields']}>*/}
-        {/*  <input*/}
-        {/*    placeholder='Email'*/}
-        {/*    {...register('email', {*/}
-        {/*      required: 'Field Required',*/}
-        {/*      pattern: {*/}
-        {/*        value: /\S+@\S+\.\S+/,*/}
-        {/*        message: 'Entered value does not match email format.'*/}
-        {/*      }*/}
-        {/*    })}*/}
-        {/*  />*/}
-        {/*  {errors.email && <span role='alert'>{errors.email.message}</span>}*/}
-        {/*</div>*/}
         <div className={global['login-form-fields']}>
           <textarea
             placeholder='Messages'
@@ -101,8 +91,3 @@ const Review = () => {
 }
 
 export default Review;
-
-/* review db
-* rating
-* email
-* message*/

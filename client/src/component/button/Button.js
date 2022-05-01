@@ -1,6 +1,7 @@
 import classes from './Button.module.css';
 
 const Button = ({type, ccsClass, name, handler, style}) => {
+  debugger
   return (
     <button
       type={type}

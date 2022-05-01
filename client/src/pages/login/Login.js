@@ -9,7 +9,7 @@ import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
 import {loginSliceActions} from './login-slice';
 import {fetchData} from "../../helper/Api";
 import {cartSliceActions} from "../cart/cart-slice";
-import Button from "../../component/mainView/button/Button";
+import Button from "../../component/button/Button";
 
 const Login = () => {
   const dispatch = useDispatch();

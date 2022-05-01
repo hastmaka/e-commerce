@@ -5,7 +5,7 @@ import {useForm} from "react-hook-form";
 import {createUserWithEmailAndPassword, getAuth} from "firebase/auth";
 import {fetchData} from "../../helper/Api";
 import {cartSliceActions} from "../cart/cart-slice";
-import Button from "../../component/mainView/button/Button";
+import Button from "../../component/button/Button";
 
 const CreateAccount = () => {
   const dispatch = useDispatch();

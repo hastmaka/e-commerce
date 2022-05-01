@@ -1,5 +1,5 @@
 import classes from './RelatedItems.module.css';
-import PriceFormatted from "../../../../component/mainView/priceFormat/PriceFormatted";
+import PriceFormatted from "../../../../component/priceFormat/PriceFormatted";
 
 const RelatedItems = ({imageUrl, title, price}) => {
   return (

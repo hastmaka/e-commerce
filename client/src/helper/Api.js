@@ -1,5 +1,5 @@
 export const fetchData = (apiRoute, action, method, data, query = {}, callback) => {
-  debugger
+  // debugger
   let url = 'http://localhost:5002/';
   if(method) {
     url += apiRoute;

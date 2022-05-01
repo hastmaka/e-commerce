@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 import classes from './Cart.module.css';
 import CartProduct from "./cartItself/CartProduct";
 import CartCheckout from "./cartCheckout/CartCheckout";
-import PriceFormatted from "../../component/mainView/priceFormat/PriceFormatted";
+import PriceFormatted from "../../component/priceFormat/PriceFormatted";
 
 const Cart = () => {
   const totalQuantity = useSelector(state => state.cart.totalQuantity);

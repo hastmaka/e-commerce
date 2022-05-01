@@ -5,7 +5,7 @@ import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {getAuth,sendPasswordResetEmail} from 'firebase/auth';
 import {loginSliceActions} from "./login-slice";
-import Button from "../../component/mainView/button/Button";
+import Button from "../../component/button/Button";
 
 
 const ForgotPass = () => {

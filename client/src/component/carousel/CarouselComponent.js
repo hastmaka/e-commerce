@@ -34,7 +34,7 @@ const CarouselComponent = () => {
             </div>
             <img
               className="d-block w-100 "
-              src={require(`../../../images/others/${item.src}`)}
+              src={require(`../../images/others/${item.src}`)}
               alt={item.alt}
             />
             <Carousel.Caption>
