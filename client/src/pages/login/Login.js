@@ -48,8 +48,8 @@ const Login = () => {
         alert('Invalid Email \nPlease check you email')
         reset();
       }
+      dispatch(loginSliceActions.isLoadingToggle());
     })
-
   }
 
   return (

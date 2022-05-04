@@ -6,6 +6,17 @@ const PORT = 5002;
 const indexRoutes = require('./routes/index');
 const errorHandler = require("./middleware/errorHandler");
 
+
+
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    res.status(statusCode).json({
+        success: 0,
+        message: err.message,
+        stack: err.stack
+    })
+})
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -23,8 +34,7 @@ app.use(cors);
 app.all('/api/auth/*', [require('./middleware/validator')]);
 
 // global error handler
-// app.use(errorHandler);
-
+app.use(errorHandler);
 
 app.use(indexRoutes);
 

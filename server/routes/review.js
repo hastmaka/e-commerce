@@ -4,7 +4,7 @@ const {handleDataToReturn} = require("../helpers/helpers");
 const {Sequelize} = require("sequelize");
 
 module.exports = {
-  create(req, res) {
+  create(req, res, next) {
     if (!req.body) {
       return res.json({
         status: 400,
@@ -27,8 +27,8 @@ module.exports = {
       }).then(result => {
         res.json(handleDataToReturn({result}))
       })
-    }).catch(err => {
-      console.log(err);
+    }).catch(e => {
+      next(e);
     })
   },
 
@@ -52,6 +52,8 @@ module.exports = {
         }]
     }).then(result => {
       res.json(handleDataToReturn(result));
+    }).catch(e => {
+      console.log(e)
     })
   },
 

@@ -60,5 +60,32 @@ module.exports = {
     }).catch(err => {
       console.log(err);
     })
-  }
+  },
+
+  update(req, res) {
+    if (!req.body) {
+      return res.json({
+        status: 400,
+        message: 'Missing Arguments',
+        success: false
+      });
+    }
+
+    models.link.update({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      phone_number: req.body.phone_number,
+    }, {
+      where: {
+        link_id: req.body.link_id
+      }
+    })
+      .then((result) => {
+        res.json(handleDataToReturn(result))
+      })
+      .catch(err => {
+        console.log(err)
+      })
+
+  },
 }

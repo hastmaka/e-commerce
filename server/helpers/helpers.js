@@ -1,5 +1,5 @@
 module.exports = {
   handleDataToReturn(result) {
-  return {success: true, data: result}
-}
+    return {success: true, data: result}
+  }
 }

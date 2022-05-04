@@ -1,0 +1,8 @@
+.input-group-text {
+    width: 5rem !important;
+}
+
+.disabled {
+    pointer-events: none;
+    color: #c2c2c2 !important;
+}

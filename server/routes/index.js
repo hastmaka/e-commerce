@@ -1,12 +1,10 @@
-const express = require('express');
-const router = express.Router();
+const router = require("express").Router();
 
 const Link = require('./link');
 const Product = require('./product');
 const Cart = require('./cart');
 const User = require('./users');
 const Review = require('./review');
-
 
 /* links */
 router.get('/link', Link.list);

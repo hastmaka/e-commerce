@@ -1,22 +1,25 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import classes from "./ProfileGeneral.module.css";
 import {useState} from "react";
 import ModalComponent from "../../../component/modal/ModalComponent";
 import Button from "../../../component/button/Button";
+import {modalSliceActions} from "../../../component/modal/modal-slice";
 
 const ProfileGeneral = () => {
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const user = useSelector(store => store.login.user);
   const items = [
-    {name: 'First Name', user: `${user.user_first_name} ${user.user_last_name}`},
-    {name: 'Email', user: user.user_email},
-    {name: 'Phone', user: user.user_phone},
-    {name: 'Address', user: user.user_address}
+    {name: 'Name', value: `${user.user_first_name} ${user.user_last_name}`, disabled: true},
+    {name: 'Email', value: user.user_email, disabled: true},
+    {name: 'Phone', value: user.user_phone, disabled: false},
+    {name: 'Address', value: user.user_address, disabled: false},
   ];
 
-  const handleTempData = (data) => {
-    debugger
-    setShowModal(true)
+  const handleTempData = () => {
+    // debugger
+    setShowModal(true);
+    dispatch(modalSliceActions.setTemData(items))
   }
 
 
@@ -24,19 +27,20 @@ const ProfileGeneral = () => {
     <>
       <ModalComponent
         show={showModal}
+        title='General Information'
         onHide={() => setShowModal(false)}
       />
-          <div className={classes['btn-container']}>
-            <Button
-              name='Edit'
-              handler={() => handleTempData(items)}
-            />
-          </div>
+      <div className={classes['btn-container']}>
+        <Button
+          name='Edit'
+          handler={() => handleTempData()}
+        />
+      </div>
       {items.map(item =>
         <div key={item.name} className={classes['profile-general-list']}>
           <div>
             <span>{item.name}: </span>
-            <span>{item.user}</span>
+            <span>{item.value}</span>
           </div>
         </div>
       )}

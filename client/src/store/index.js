@@ -1,16 +1,18 @@
 import {configureStore} from "@reduxjs/toolkit";
 
-import mainViewReducer from '../component/mainView/MainView-slice';
-import detailProductReducer from '../pages/productDetail/DetailProduct-slice';
-import cartReducer from '../pages/cart/cart-slice';
+import mainViewSlice from '../component/mainView/MainView-slice';
+import detailProductSlice from '../pages/productDetail/DetailProduct-slice';
+import cartSlice from '../pages/cart/cart-slice';
 import loginSlice from "../pages/login/login-slice";
+import modalSlice from "../component/modal/modal-slice";
 
 const store = configureStore({
     reducer: {
         login: loginSlice,
-        mainView: mainViewReducer,
-        detailProduct: detailProductReducer,
-        cart: cartReducer
+        mainView: mainViewSlice,
+        detailProduct: detailProductSlice,
+        cart: cartSlice,
+        modal: modalSlice,
     }
 })
 

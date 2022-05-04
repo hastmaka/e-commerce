@@ -1,30 +1,66 @@
 import {Modal} from "react-bootstrap";
+import Button from "../button/Button";
+import Input from "../input/Input";
+import {useForm} from 'react-hook-form';
+import {useSelector} from "react-redux";
 
-const ModalComponent = (props) => {
+const ModalComponent = ({show, title, onHide}) => {
+  const items = useSelector(store => store.modal.tempData)
   // debugger
+  const {reset, register, handleSubmit, formState: {errors}} = useForm();
+
+  const onSubmit = (data) => {
+    reset();
+    debugger
+  }
+
+  const onCancel = () => {
+    reset();
+  }
+
   return (
     <Modal
-      {...props}
+      show={show}
       size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Edit Personal Information
+      <Modal.Header>
+        <Modal.Title>
+          {title}
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        {/*<Button onClick={props.onHide}>Close</Button>*/}
-      </Modal.Footer>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Modal.Body>
+          {items.length > 0 && items.map(item =>
+            <Input
+              register={register}
+              required
+              label={item.name}
+              key={item.name}
+              iconName={item.name}
+              value={item.value}
+              ccsClass={item.disabled ? 'disabled' : ''}
+            />
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            ccsClass='danger'
+            name='Close'
+            style={{backgroundColor: '#bb2a3d'}}
+            handler={() => {
+              onHide();
+              onCancel()
+            }}
+          />
+          <Button
+            type='submit'
+            ccsClass='success'
+            name='Save'
+            style={{backgroundColor: '#2abb69'}}
+          />
+        </Modal.Footer>
+      </form>
     </Modal>
   )
 }
