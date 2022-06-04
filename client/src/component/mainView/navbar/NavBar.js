@@ -1,6 +1,5 @@
 import classes from './NavBar.module.css';
 import Nav from "./nav/Nav";
-import TopNav from "./topNav/TopNav";
 import {data} from "../../../store/dummyData";
 
 const NavBar = () => {

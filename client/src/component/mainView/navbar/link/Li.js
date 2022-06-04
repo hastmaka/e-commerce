@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import classes from './Li.module.css';
 
 const Li = ({title, href}) => {
-  // debugger
+    // debugger
     return (
         <li className='link-item'>
             <NavLink

@@ -1,7 +1,7 @@
 const ProfileArchivedOrders = () => {
-  return (
-    <div>ProfileArchivedOrders</div>
-  )
+    return (
+        <div>ProfileArchivedOrders</div>
+    )
 }
 
 export default ProfileArchivedOrders;

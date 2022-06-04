@@ -33,10 +33,11 @@ app.use(cors);
 // app.all('/api/web/*', [require('./middleware/validator')]);
 app.all('/api/auth/*', [require('./middleware/validator')]);
 
+app.use(indexRoutes);
+
 // global error handler
 app.use(errorHandler);
 
-app.use(indexRoutes);
 
 
 

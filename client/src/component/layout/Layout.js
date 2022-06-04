@@ -4,10 +4,6 @@ import classes from './Layout.module.css';
 import {Fragment} from "react";
 import NavBar from "../mainView/navbar/NavBar";
 import Footer from "../mainView/footer/Footer";
-import Login from "../../pages/login/Login";
-import Checkout from "../../pages/checkout/Checkout";
-import Cart from "../../pages/cart/Cart";
-import Profile from "../../pages/profile/Profile";
 // import ProductDetails from "../../pages/productDetail/ProductDetails";
 // import Cart from "../../pages/cart/Cart";
 

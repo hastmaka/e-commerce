@@ -34,7 +34,7 @@
 
 .shipping-division hr, .order-total-division hr {
     width: 60px;
-    background-color: var(--border);
+    background-color: var(--swatch_3);
     border: none;
     height: 1px;
 }

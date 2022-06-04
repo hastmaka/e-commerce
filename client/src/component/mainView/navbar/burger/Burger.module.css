@@ -1,6 +1,6 @@
 .burger-general-container {
     position: absolute;
-    top: 25px;
+    top: 17px;
     left: 2rem;
     display: flex;
     flex-direction: column;
@@ -18,18 +18,22 @@
     width: 28px;
     height: 2px;
     /*background: ${({ open }) => open ? '#232323' : '#888888'};*/
-    background: var(--swatch_3);
+    /*background: var(--swatch_2);*/
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
     transform-origin: 1px;
 }
-.burger:hover {
-    background: var(--swatch_1);
-}
+/*.burger:hover {*/
+/*    background: transparent;*/
+/*}*/
 
 .bg-color-active {
-    background: #888888;
+    background: var(--swatch_2);
+}
+
+.burger-one {
+    width: 22px !important;
 }
 
 .burger-one,

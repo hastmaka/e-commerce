@@ -1,4 +1,4 @@
-button {
+.custom-btn {
     /*margin: 10px;*/
     padding: 7px 10px;
     background-color: transparent;
@@ -9,7 +9,7 @@ button {
     transition: all 200ms ease-in-out;
 }
 
-button:hover {
+.custom-btn:hover {
     color: #fff;
     background-color: rgb(56, 56, 56);
     border-color: #797979;

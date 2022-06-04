@@ -25,7 +25,7 @@ const detailProductSlice = createSlice({
     },
     reducers: {
 
-        detailProduct (state, action) {
+        detailProduct(state, action) {
             // debugger
             const data = {...action.payload.data};
             let main_image_object = data.images.filter(image => image.image_main)[0];
@@ -46,7 +46,7 @@ const detailProductSlice = createSlice({
             }
         },
 
-        setMainSliderImage (state, action) {
+        setMainSliderImage(state, action) {
             const data = {...state.detailData};
             data.image_main = action.payload.image_main;
             return {
@@ -55,7 +55,7 @@ const detailProductSlice = createSlice({
             }
         },
 
-        setSizes (state, action) {
+        setSizes(state, action) {
             const data = {...state.detailData};
             return {
                 ...state,
@@ -66,7 +66,7 @@ const detailProductSlice = createSlice({
             }
         },
 
-        setColors (state, action) {
+        setColors(state, action) {
             const data = {...state.detailData};
             data.active_colors = action.payload.colors;
             return {
@@ -86,8 +86,8 @@ const detailProductSlice = createSlice({
             return {
                 ...state,
                 reviews: [
-                  action.payload.data.result,
-                  ...state.reviews
+                    action.payload.data.result,
+                    ...state.reviews
                 ]
             }
         }

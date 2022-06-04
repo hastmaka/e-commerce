@@ -1,7 +1,7 @@
 const ProfileYourPayments = () => {
-  return (
-    <div>ProfileYourPayments</div>
-  )
+    return (
+        <div>ProfileYourPayments</div>
+    )
 }
 
 export default ProfileYourPayments;

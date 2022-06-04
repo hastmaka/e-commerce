@@ -1,7 +1,7 @@
 const ProfileLoginAndSecurity = () => {
-  return (
-    <div>ProfileLoginAndSecurity</div>
-  )
+    return (
+        <div>ProfileLoginAndSecurity</div>
+    )
 }
 
 export default ProfileLoginAndSecurity;

@@ -1,4 +1,6 @@
 .main-view-general-container {
+    position: relative;
+    top: -60px;
     display: flex;
     justify-content: center;
     width: 100%;

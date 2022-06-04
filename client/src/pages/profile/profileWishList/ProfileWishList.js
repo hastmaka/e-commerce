@@ -1,7 +1,7 @@
 const ProfileWishList = () => {
-  return (
-    <div>ProfileWishList</div>
-  )
+    return (
+        <div>ProfileWishList</div>
+    )
 }
 
 export default ProfileWishList;

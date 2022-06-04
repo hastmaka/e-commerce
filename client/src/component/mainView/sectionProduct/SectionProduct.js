@@ -21,22 +21,22 @@ const SectionProduct = ({section_title}) => {
     return (
         <div className={classes['product-general-container']}>
             <h2 className={classes['product-category']}>{section_title}</h2>
-                <button
-                    className={classes['pre-btn']}
-                    onClick={() => sliderHandler(-1)}>
-                    <img
-                        src={require('../../../images/arrow.png')}
-                        alt=""
-                    />
-                </button>
+            <button
+                className={classes['pre-btn']}
+                onClick={() => sliderHandler(-1)}>
+                <img
+                    src={require('../../../images/arrow.png')}
+                    alt=""
+                />
+            </button>
 
-                <button
-                    className={classes['nxt-btn']}
-                    onClick={() => sliderHandler(1)}>
-                    <img
-                        src={require('../../../images/arrow.png')}
-                        alt=""/>
-                </button>
+            <button
+                className={classes['nxt-btn']}
+                onClick={() => sliderHandler(1)}>
+                <img
+                    src={require('../../../images/arrow.png')}
+                    alt=""/>
+            </button>
             {/*product-container*/}
             <div className={classes['product-container']} ref={containerSlider}>
                 {products.length && products.map((card, index) => (

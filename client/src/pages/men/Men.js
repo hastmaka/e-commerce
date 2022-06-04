@@ -1,4 +1,4 @@
 const Men = () => {
-  return(<div><h1>Men</h1></div>)
+    return (<div><h1>Men</h1></div>)
 }
 export default Men;

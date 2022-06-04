@@ -48,7 +48,7 @@ export const fetchProductsData = () => {
             data.active_colors = data.sizes.filter(color => color.colors)[0]?.colors;
             data.sizes[0].active = true;
 
-            data = Array.isArray(data)? data: [data];
+            data = Array.isArray(data) ? data : [data];
 
             dispatch(ecommerceSliceActions.savedProducts({
                 /* have to send the same structure */

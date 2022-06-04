@@ -15,7 +15,7 @@ const ImageSliderContainer = ({image_main, images, product_discount}) => {
     return (
         <div className={classes['image-slider']}>
             <div className={classes['discount-badge-container']}>
-              <span className={classes['discount-badge']}>{product_discount}% off</span>
+                <span className={classes['discount-badge']}>{product_discount}% off</span>
             </div>
             {image_main && <img src={require(`../../../images/${image_main}`)} alt=""/>}
             <div className={classes['product-images']}>

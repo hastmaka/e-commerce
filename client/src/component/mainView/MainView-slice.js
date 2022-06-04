@@ -8,14 +8,14 @@ const mainViewSlice = createSlice({
 
     },
     reducers: {
-        savedLinks (state, action) {
+        savedLinks(state, action) {
             return {
                 ...state,
                 links: action.payload.data
             }
         },
 
-        mainProducts (state, action) {
+        mainProducts(state, action) {
             return {
                 ...state,
                 products: [...action.payload.data],

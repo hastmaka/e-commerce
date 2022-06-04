@@ -1,8 +1,7 @@
-import {Route, Routes, Navigate} from "react-router-dom";
+import {Navigate, Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {fetchData} from "./helper/Api";
-import {useLocation} from "react-router-dom";
 import {mainViewSliceActions} from "./component/mainView/MainView-slice";
 
 import './App.css';
@@ -39,72 +38,78 @@ import Checkout from "./pages/checkout/Checkout";
 initialize();
 
 const App = () => {
-  const dispatch = useDispatch();
-  const loginStore = useSelector(store => store.login);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const loginStore = useSelector(store => store.login);
 
-  const userIsLoggedIn = !!loginStore.token;
+    const userIsLoggedIn = !!loginStore.token;
 
-  /* fix to always begin from the stop*/
-  const location = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
+    /* fix to always begin from the stop*/
+    const location = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location]);
 
-  // debugger
+    useEffect(() => {
+        // dispatch(fetchData('product/1', detailProductSliceActions.detailProduct));
+        dispatch(fetchData('link', mainViewSliceActions.savedLinks));
+        dispatch(fetchData('product/all', mainViewSliceActions.mainProducts));
+        if (!!localStorage.getItem('token')) {
+            dispatch(fetchData('api/auth/login', loginSliceActions.loginHandler, 'POST', {
+                user: {idToken: localStorage.getItem('token')}
+            }, null, (data) => {
+                dispatch(cartSliceActions.cartQuantity({data: data.data.cart}))
+            }))
+        } else {
+            if(
+                location.pathname !== '/login' &&
+                location.pathname !== '/createAccount' &&
+                location.pathname !== '/forgotPassword') {
+                navigate('/home')
+            }
+        }
+    }, [dispatch]);
 
-  useEffect(() => {
-    // dispatch(fetchData('product/1', detailProductSliceActions.detailProduct));
-    dispatch(fetchData('link', mainViewSliceActions.savedLinks));
-    dispatch(fetchData('product/all', mainViewSliceActions.mainProducts));
-    if (!!localStorage.getItem('token')) {
-      dispatch(fetchData('api/auth/login', loginSliceActions.loginHandler, 'POST', {
-        user: {idToken: localStorage.getItem('token')}
-      }, null, (data) => {
-        dispatch(cartSliceActions.cartQuantity({data: data.data.cart}))
-      }))
-    }
-  }, [dispatch]);
 
+    return (
+        <Layout>
+            {/*navbar*/}
+            <Routes>
 
-  return (
-    <Layout>
-      {/*navbar*/}
-      <Routes>
+                <Route path='/' element={<Navigate to='/home' replace/>}/>
+                <Route>
+                    <Route path='/home' element={<MainView/>}/>
+                    <Route path='/women' element={<Women/>}/>
+                    <Route path='/men' element={<Men/>}/>
+                    <Route path='/kids' element={<Kids/>}/>
+                    <Route path='/accessories' element={<Accessories/>}/>
+                </Route>
 
-        <Route path='/' element={<Navigate to='/home' replace/>}/>
-        <Route>
-          <Route path='/home' element={<MainView/>}/>
-          <Route path='/women' element={<Women/>}/>
-          <Route path='/men' element={<Men/>}/>
-          <Route path='/kids' element={<Kids/>}/>
-          <Route path='/accessories' element={<Accessories/>}/>
-        </Route>
+                <Route path='/productDetails' element={<ProductDetails/>}/>
+                <Route path='/cart' element={<Cart/>}/>
+                <Route path='/checkout' element={<Checkout/>}/>
 
-        <Route path='/productDetails' element={<ProductDetails/>}/>
-        <Route path='/cart' element={<Cart/>}/>
-        <Route path='/checkout' element={<Checkout/>}/>
+                {!userIsLoggedIn && <Route path='/login' element={<Login/>}/>}
+                <Route path='/forgotPassword' element={<ForgotPass/>}/>
+                <Route path='/createAccount' element={<CreateAccount/>}/>
 
-        {!userIsLoggedIn && <Route path='/login' element={<Login/>}/>}
-        <Route path='/forgotPassword' element={<ForgotPass/>}/>
-        <Route path='/createAccount' element={<CreateAccount/>}/>
+                {userIsLoggedIn &&
+                    <Route path='/profile' element={<Profile/>}>
+                        <Route index element={<ProfileGeneral/>}/>
+                        <Route path='general' element={<ProfileGeneral/>}/>
+                        <Route path='yourOrder' element={<ProfileYourOrder/>}/>
+                        <Route path='loginAndSecurity' element={<ProfileLoginAndSecurity/>}/>
+                        <Route path='yourPayments' element={<ProfileYourPayments/>}/>
+                        <Route path='yourMessages' element={<ProfileYourMessages/>}/>
+                        <Route path='archivedOrders' element={<ProfileArchivedOrders/>}/>
+                        <Route path='wishList' element={<ProfileWishList/>}/>
+                    </Route>}
 
-        {userIsLoggedIn &&
-          <Route path='/profile' element={<Profile/>}>
-            <Route index element={<ProfileGeneral/>}/>
-            <Route path='general' element={<ProfileGeneral/>}/>
-            <Route path='yourOrder' element={<ProfileYourOrder/>}/>
-            <Route path='loginAndSecurity' element={<ProfileLoginAndSecurity/>}/>
-            <Route path='yourPayments' element={<ProfileYourPayments/>}/>
-            <Route path='yourMessages' element={<ProfileYourMessages/>}/>
-            <Route path='archivedOrders' element={<ProfileArchivedOrders/>}/>
-            <Route path='wishList' element={<ProfileWishList/>}/>
-          </Route>}
+                <Route path='*' element={<Navigate to={'/home'} replace/>}/>
 
-        <Route path='*' element={<Navigate to={'/home'} replace/>}/>
-
-      </Routes>
-    </Layout>
-  )
+            </Routes>
+        </Layout>
+    )
 }
 
 export default App;

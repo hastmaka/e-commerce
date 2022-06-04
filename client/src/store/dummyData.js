@@ -69,7 +69,7 @@ export const collection = [
         collection_title_up: 'women',
         collection_title_down: 'apparels'
     }, {
-        img:'men-collection',
+        img: 'men-collection',
         collection_title_up: 'men',
         collection_title_down: 'apparels'
     }, {
@@ -78,8 +78,8 @@ export const collection = [
     }
 ];
 export const footerData = [{
-    category_title:'men',
-    links:[
+    category_title: 'men',
+    links: [
         {linkInnerHtml: 't-shirt', href: '#'},
         {linkInnerHtml: 'sweatshirts', href: '#'},
         {linkInnerHtml: 'shirts', href: '#'},
@@ -91,9 +91,9 @@ export const footerData = [{
         {linkInnerHtml: 'sports', href: '#'},
         {linkInnerHtml: 'watch', href: '#'}
     ]
-},{
-    category_title:'women',
-    links:[
+}, {
+    category_title: 'women',
+    links: [
         {linkInnerHtml: 't-shirt', href: '#'},
         {linkInnerHtml: 'sweatshirts', href: '#'},
         {linkInnerHtml: 'shirts', href: '#'},
