@@ -21,7 +21,7 @@ export const fetchData = (apiRoute, action, method, data, query = {}, callback) 
         } : {});
 
         let responseData = await response.json();
-        debugger
+        // debugger
         try {
             if (!responseData.success) {
                 if (responseData.status === 403) {

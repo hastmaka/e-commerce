@@ -2,10 +2,9 @@ import classes from './CartProduct.module.css';
 import PriceFormatted from "../../../component/priceFormat/PriceFormatted";
 
 const CartProduct = ({color, imageUrl, price, quantity, discount, size, title}) => {
-
     return (
-        <div className={classes['cart-item-part-noname']}>
-            <div className={classes['cart-item-part-description']}>
+        <div className={classes['cart-product-container']}>
+            <div className={classes['cart-product-description-container']}>
                 <div className={classes['cart-product-img']}>
                     <img src={require(`../../../images/${imageUrl}`)} alt=""/>
                 </div>

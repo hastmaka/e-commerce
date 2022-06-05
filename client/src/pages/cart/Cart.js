@@ -1,47 +1,15 @@
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
 import classes from './Cart.module.css';
 import CartProduct from "./cartItself/CartProduct";
 import CartCheckout from "./cartCheckout/CartCheckout";
 import PriceFormatted from "../../component/priceFormat/PriceFormatted";
-import {cartSliceActions} from "./cart-slice";
-import {useLocation} from "react-router-dom";
-import {fetchData} from "../../helper/Api";
-import {useEffect} from "react";
 // import {cartSliceActions} from "./cart-slice";
 
 const Cart = () => {
     const totalQuantity = useSelector(state => state.cart.totalQuantity);
     const totalPrice = useSelector(state => state.cart.totalPrice);
     const cartItems = useSelector(store => store.cart.items);
-    const loginStore = useSelector(store => store.login);
-
-    const location = useLocation();
-    const dispatch = useDispatch();
-    const emptyCart = () => {
-        dispatch(cartSliceActions.emptyCart())
-    }
-
-    useEffect(() => {
-        if(location.pathname === '/cart') {
-            if(performance.navigation.type === 1) {
-                debugger
-                dispatch(fetchData(`api/cart/all/${loginStore.user.user_id}`, cartSliceActions.showItemsInCart));
-                emptyCart()
-            }
-        }
-    }, [])
-
-
-    //
-    // useEffect(() => {
-    //     // dispatch(cartSliceActions.emptyCart());
-    //     dispatch(cartSliceActions.addToCart({
-    //         items: cartItems,
-    //         totalPrice: totalPrice,
-    //         quantity: totalQuantity
-    //     }));
-    // }, [cartItems])
 
     return (
         <div className={classes['cart-container']}>

@@ -1,7 +1,10 @@
 import classes from './ShippingAndPayment.module.css';
 import Button from "../../component/button/Button";
+import {useSelector} from "react-redux";
 
 const ShippingAndPayment = () => {
+    const user = useSelector(state => state.login.user);
+    debugger
     return (
         <div className={classes['checkout-shipping-payment']}>
 
@@ -10,11 +13,8 @@ const ShippingAndPayment = () => {
                     <div>Shipping address</div>
                     <div><a href='#'>Change</a></div>
                 </div>
-                <div>16950 N BAY RD 1014 BUILDING 2
-                    NORTH MIAMI BEACH, FL 33160-4240
-                    United States
-                </div>
-                <div>7869526589</div>
+                <div>{user.user_address}</div>
+                <div>{user.user_phone}</div>
                 <div><a href='#'>Add Delivery Instruction</a></div>
             </div>
 

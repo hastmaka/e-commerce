@@ -1,7 +1,8 @@
 FIX
 ________________________________________________________
-product detail comes with average rating too.
-when reload in cart and click cart add the quantity again
+product detail comes with average rating too. DONE
+when reload in cart and click cart add the quantity again DONE
+reload page in any place items stay in cart DONE
 
 
 
@@ -10,9 +11,10 @@ ________________________________________________________
 Cart
 delete update save_for_later
 checkout
-quantity
+quantity DONE
 
 Profile
+address-section need zip code
 
 Toast system
 react-toastify

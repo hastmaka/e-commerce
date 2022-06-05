@@ -20,13 +20,13 @@
 }
 
 .link:hover:after {
-    width: 100%;
+    width: 100% !important;
 }
 
 .link:hover {
-    color: var(--swatch_6);
+    color: var(--swatch_6) !important;
 }
 
 .active {
-    color: var(--swatch_6);
+    color: var(--swatch_6) !important;
 }

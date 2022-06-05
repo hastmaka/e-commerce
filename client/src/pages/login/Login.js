@@ -34,7 +34,6 @@ const Login = () => {
                     user: res._tokenResponse
                 }, null, (data) => {
                     dispatch(cartSliceActions.cartQuantity({data: data.data.cart}))
-
                 }))
                 navigate('/home')
                 localStorage.setItem('token', res.user.accessToken);

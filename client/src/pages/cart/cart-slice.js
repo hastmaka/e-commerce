@@ -9,7 +9,7 @@ const cartSlice = createSlice({
     },
     reducers: {
         showItemsInCart(state, action) {
-            debugger
+            // debugger
             let { total, quantity } = action.payload.data.reduce(
                 (tempData, currentItem) => {
                     const { product, cart_product_quantity } = currentItem;
@@ -37,7 +37,7 @@ const cartSlice = createSlice({
             }
         },
 
-        deleteItemsToCart() {
+        deleteItemsToCart(state, action) {
         },
 
         emptyCart(state) {

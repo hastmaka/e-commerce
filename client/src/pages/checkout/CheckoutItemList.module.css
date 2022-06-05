@@ -7,13 +7,13 @@
     gap: var(--gap);
 }
 
-.checkout-item-list div {
+/*.checkout-item-list div {*/
     /*border: 1px solid black;*/
-    width: 100%;
+    /*width: 100%;*/
     /*display: flex;*/
     /*flex-direction: row;*/
     /*justify-content: space-between;*/
     /*gap: var(--gap);*/
     /*margin: 10px;*/
     /*background: var(--baseBgColor);*/
-}
+/*}*/

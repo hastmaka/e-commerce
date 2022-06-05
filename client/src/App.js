@@ -51,14 +51,13 @@ const App = () => {
     }, [location]);
 
     useEffect(() => {
-        // dispatch(fetchData('product/1', detailProductSliceActions.detailProduct));
         dispatch(fetchData('link', mainViewSliceActions.savedLinks));
         dispatch(fetchData('product/all', mainViewSliceActions.mainProducts));
         if (!!localStorage.getItem('token')) {
             dispatch(fetchData('api/auth/login', loginSliceActions.loginHandler, 'POST', {
                 user: {idToken: localStorage.getItem('token')}
             }, null, (data) => {
-                dispatch(cartSliceActions.cartQuantity({data: data.data.cart}))
+                dispatch(cartSliceActions.showItemsInCart({data: data.data.cart}))
             }))
         } else {
             if(

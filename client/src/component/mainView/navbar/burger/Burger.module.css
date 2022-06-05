@@ -19,7 +19,7 @@
     height: 2px;
     /*background: ${({ open }) => open ? '#232323' : '#888888'};*/
     /*background: var(--swatch_2);*/
-    border-radius: 10px;
+    border-radius: 5px;
     transition: all 0.3s linear;
     position: relative;
     transform-origin: 1px;
