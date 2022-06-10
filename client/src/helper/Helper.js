@@ -1,5 +1,5 @@
 export const calcDiscount = (price, discount) => {
-    return (price * (100 - discount) / 100).toFixed(2);
+    return Number((price * (100 - discount) / 100).toFixed(2));
 }
 
 export const phoneFormat = (value, previousValue) => {
@@ -13,3 +13,4 @@ export const phoneFormat = (value, previousValue) => {
         return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3, 6)}-${currentValue.slice(6, 10)}`;
     }
 };
+

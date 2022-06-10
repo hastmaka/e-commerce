@@ -18,7 +18,7 @@ const loginSlice = createSlice({
             address: '',
             phone: '',
         },
-        isLoading: false
+        isLoading: false,
         // expireIn: expireIn
     },
     reducers: {

@@ -1,6 +1,6 @@
 import Li from "../link/Li";
 import {useSelector} from "react-redux";
-import classes from './Menu.module.css';
+import classes from './Menu.module.scss';
 
 
 const Menu = ({open}) => {

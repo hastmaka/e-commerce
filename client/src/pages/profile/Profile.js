@@ -1,16 +1,15 @@
-import classes from './Profile.module.css';
+import classes from './Profile.module.scss';
 import {Outlet} from "react-router-dom";
-
-import Li from "../../component/mainView/navbar/link/Li";
+import LiProfile from "./LiProfile";
 
 const profileLinks = [
     {to: 'general', name: 'General'},
     {to: 'yourOrder', name: 'Your Orders'},
-    {to: 'loginAndSecurity', name: 'Login and Security'},
-    {to: 'yourPayments', name: 'Your Payments'},
-    {to: 'yourMessages', name: 'Your Messages'},
-    {to: 'archivedOrders', name: 'Archived Orders'},
-    {to: 'wishList', name: 'Wish List'}
+    // {to: 'loginAndSecurity', name: 'Login and Security'},
+    // {to: 'yourPayments', name: 'Your Payments'},
+    // {to: 'yourMessages', name: 'Your Messages'},
+    // {to: 'archivedOrders', name: 'Archived Orders'},
+    // {to: 'wishList', name: 'Wish List'}
 ]
 
 const Profile = () => {
@@ -22,7 +21,7 @@ const Profile = () => {
                 <div className={classes['user-profile-content-fix']}>
                     <ul className={classes['user-profile-left']}>
                         {profileLinks.map(pLink =>
-                            <Li
+                            <LiProfile
                                 key={pLink.name}
                                 title={pLink.name}
                                 href={pLink.to}

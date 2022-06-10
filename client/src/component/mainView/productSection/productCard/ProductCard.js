@@ -1,12 +1,8 @@
-import classes from './ProductCard.module.css';
-import ProductImage from "./productImage/ProductImage";
-import ProductInfo from "./productInfo/ProductInfo";
+import classes from './ProductCard.module.scss';
+import ProductImage from './productImage/ProductImage';
+import ProductInfo from './productInfo/ProductInfo';
 
 const ProductCard = ({items}) => {
-    // debugger
-    // const {discount_tag, img, btnText, prod_info_brand, prod_info_description,
-    //     prod_info_actual_price} = items;
-
     const {
         product_discount, images, product_name, product_description,
         product_price, product_id

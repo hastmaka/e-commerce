@@ -1,3 +1,5 @@
+import {loginSliceActions} from "../pages/login/login-slice";
+
 export const fetchData = (apiRoute, action, method, data, query = {}, callback) => {
     // debugger
     let url = 'http://localhost:5002/';
@@ -25,7 +27,7 @@ export const fetchData = (apiRoute, action, method, data, query = {}, callback) 
         try {
             if (!responseData.success) {
                 if (responseData.status === 403) {
-                    localStorage.setItem('token', '')
+                    dispatch(loginSliceActions.logoutHandler())
                     return alert('user_unauthorized')
                 }
                 throw new Error(responseData.message);

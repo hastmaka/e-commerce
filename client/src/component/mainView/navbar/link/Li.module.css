@@ -24,7 +24,7 @@
 }
 
 .link:hover {
-    color: var(--swatch_6) !important;
+    color: #ECB72DFF;
 }
 
 .active {

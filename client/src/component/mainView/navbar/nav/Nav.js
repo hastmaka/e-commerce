@@ -1,4 +1,4 @@
-import classes from './Nav.module.css';
+import classes from './Nav.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {NavLink, useLocation} from "react-router-dom";
 import {loginSliceActions} from "../../../../pages/login/login-slice";
@@ -44,8 +44,8 @@ const Nav = ({data}) => {
         <div className={classes.nav}>
             <div
                 className={
-                open ? `${classes['menu-overlay']} ${classes['menu-overlay-active']}` :
-                    `${classes['menu-overlay']}`}
+                    open ? `${classes['menu-overlay']} ${classes['menu-overlay-active']}` :
+                        `${classes['menu-overlay']}`}
             />
 
             <div ref={node}>
@@ -55,23 +55,26 @@ const Nav = ({data}) => {
             <img className={classes['brand-logo']} src={require(`../../../../images/${company_logo}.png`)} alt=""/>
             <div className={classes['nav-items']}>
                 {userIsLoggedIn &&
-                    <div>
-                        <NavLink
-                            to={'/profile'}>
-                            <RiUserFollowFill className={classes['nav-icon']}/>
-                        </NavLink>
-                    </div>}
-
-                {userIsLoggedIn &&
-                    <div>
-                        <NavLink
-                            to={'/cart'}
-                            onClick={() => cartItemsHandler()}>
-                            <MdOutlineShoppingCart className={classes['nav-icon']}/>
-                        </NavLink>
-                        {totalQuantity > 0 && <div className={classes.badge}>{totalQuantity}
-                        </div>}
-                    </div>}
+                    <>
+                        <div>
+                            <span>Welcome: <span>{loginStore.user.user_first_name}</span></span>
+                        </div>
+                        <div>
+                            <NavLink
+                                to={'/profile'}>
+                                <RiUserFollowFill className={classes['nav-icon']}/>
+                            </NavLink>
+                        </div>
+                        <div>
+                            <NavLink
+                                to={'/cart'}
+                                onClick={() => cartItemsHandler()}>
+                                <MdOutlineShoppingCart className={classes['nav-icon']}/>
+                            </NavLink>
+                            {totalQuantity > 0 && <div className={classes.badge}>{totalQuantity}
+                            </div>}
+                        </div>
+                    </>}
 
                 <div>
                     <NavLink

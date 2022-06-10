@@ -1,8 +1,14 @@
+@use 'src/scss/index';
+
 .cart-container {
+    @include index.displayFlex(null, center, null);
     border: 1px solid var(--border);
     background: var(--baseBgColor);
-    display: flex;
-    flex-direction: column;
+
+    .cart-container-fix {
+        max-width: var(--max-width);
+        width: 100%;
+    }
 }
 
 .cart-header {
@@ -17,17 +23,14 @@
 }
 
 .cart-itself {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    @include index.displayFlex(row, space-between, null);
     gap: var(--gap);
     margin: 10px;
     background: var(--baseBgColor);
 }
 
 .cart-item-part {
-    display: flex;
-    flex-direction: column;
+    @include index.displayFlex(column, null, null);
     border-radius: var(--border-radius);
     padding: 15px;
     border: 1px solid var(--border);
@@ -36,10 +39,7 @@
 }
 
 .cart-item-part-title {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    @include index.displayFlex(row, space-between, center);
     border-bottom: 1px solid var(--border);
 }
 
@@ -54,10 +54,7 @@
 }
 
 .cart-sub-total {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: baseline;
+    @include index.displayFlex(row, flex-end, baseline);
 
     margin-right: 32px;
     color: var(--price);
@@ -65,8 +62,7 @@
 }
 
 .cart-sub-total div {
-    display: flex;
-    flex-direction: row;
+    @include index.displayFlex(row, null, null);
 }
 
 .sub-total-price {
@@ -74,17 +70,14 @@
 }
 
 .cart-checkout-part-container {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--border);
+    @include index.displayFlex(column, null, null);
     gap: 10px;
     width: 500px;
 }
 
 @media (max-width: 928px) {
     .cart-itself {
-        display: flex;
-        flex-direction: column;
+        @include index.displayFlex(column, null, null);
     }
     .cart-checkout-part-container {
         width: 100%;

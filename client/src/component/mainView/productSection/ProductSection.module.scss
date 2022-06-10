@@ -1,0 +1,74 @@
+@use 'src/scss/index';
+
+.product-general-container-fashion {
+    position: relative;
+    width: 100%;
+    height: 610px;
+    background: #eaeded;
+
+    .product-general-container{
+        @include index.displayFlex(column, flex-start, null);
+        position: relative;
+        overflow: hidden;
+        padding: 20px 0;
+        margin: 15px;
+        background: rgba(2, 3, 3, 0.28);
+
+        border-radius: 10px;
+        z-index: 4;
+
+        .product-category{
+            padding: 0 10vw;
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 40px;
+            text-transform: capitalize;
+        }
+
+        .product-container{
+            padding: 0 80px;
+            display: flex;
+            height: 460px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 40px;
+        }
+
+        .product-container::-webkit-scrollbar{
+            display: none;
+        }
+
+        /*btn*/
+        .pre-btn, .nxt-btn{
+            border: none;
+            width: 80px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            cursor: pointer;
+            z-index: 8;
+        }
+
+        .pre-btn{
+            left: 0;
+            transform: rotate(180deg);
+        }
+
+        .nxt-btn{
+            right: 0;
+        }
+
+        .pre-btn img, .nxt-btn img{
+            opacity: 0.2;
+        }
+
+        .pre-btn:hover img, .nxt-btn:hover img{
+            opacity: 1;
+            filter: brightness(1.75);
+        }
+    }
+}

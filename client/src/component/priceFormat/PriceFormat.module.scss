@@ -1,6 +1,7 @@
+@use 'src/scss/index';
+
 .price-formatted-container {
-    display: flex;
-    align-items: baseline;
+    @include index.displayFlex(null, null, center)
 }
 
 .price {

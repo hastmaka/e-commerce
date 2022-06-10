@@ -1,8 +1,8 @@
 import classes from './MainView.module.css';
 
-// import ProductView from "./sectionProduct/productView/ProductView";
+// import ProductView from "./productSection/productView/ProductView";
 import HeroSection from "./heroSection/HeroSection";
-import SectionProduct from "./sectionProduct/SectionProduct";
+import ProductSection from "./productSection/ProductSection";
 import CarouselComponent from "../carousel/CarouselComponent";
 
 const MainView = () => {
@@ -17,7 +17,7 @@ const MainView = () => {
                 <HeroSection/>
 
                 {/*product-section*/}
-                <SectionProduct
+                <ProductSection
                     section_title={'best selling'}
                 />
 
@@ -27,12 +27,12 @@ const MainView = () => {
                 {/*/>*/}
 
                 {/*product-section*/}
-                {/*<SectionProduct*/}
+                {/*<ProductSection*/}
                 {/*  section_title={'shirt'}*/}
                 {/*/>*/}
 
                 {/*product-section*/}
-                {/*<SectionProduct*/}
+                {/*<ProductSection*/}
                 {/*  section_title={'shoes'}*/}
                 {/*/>*/}
             </div>

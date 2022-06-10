@@ -4,7 +4,7 @@ import {useEffect} from "react";
 import {fetchData} from "./helper/Api";
 import {mainViewSliceActions} from "./component/mainView/MainView-slice";
 
-import './App.css';
+import './App.scss';
 import Layout from "./component/layout/Layout";
 import MainView from "./component/mainView/MainView";
 

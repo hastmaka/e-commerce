@@ -1,5 +1,7 @@
 FIX
 ________________________________________________________
+when token expired reload the view
+
 product detail comes with average rating too. DONE
 when reload in cart and click cart add the quantity again DONE
 reload page in any place items stay in cart DONE

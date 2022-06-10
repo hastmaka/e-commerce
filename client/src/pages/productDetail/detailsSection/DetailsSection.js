@@ -1,4 +1,4 @@
-import classes from './DetailsSection.module.css';
+import classes from './DetailsSection.module.scss';
 import {fetchData} from "../../../helper/Api";
 import {calcDiscount} from "../../../helper/Helper";
 import {useDispatch, useSelector} from "react-redux";
@@ -9,6 +9,7 @@ import SizeSection from "./sizesSection/SizeSection";
 import ColorSection from "./colorsSection/ColorSection";
 import RatingComponent from "../productDescription/review/RatingComponent";
 import {useEffect} from "react";
+import PriceFormatted from "../../../component/priceFormat/PriceFormatted";
 // import {cartSliceActions} from "../../cart/cart-slice";
 
 const DetailsSection = ({product_name, product_price, product_discount,
@@ -60,12 +61,22 @@ const DetailsSection = ({product_name, product_price, product_discount,
 
             <div className={classes['price-section']}>
                 <div className={classes['product-price']}>
-                    <span className={classes.price}>${priceAfterApplyDiscount.split('.')[0]}</span>
-                    <span className={classes.decimal}>{priceAfterApplyDiscount.split('.')[1]}</span>
+                    <PriceFormatted
+                        price={priceAfterApplyDiscount}
+                        priceFS={26}
+                    />
+                    <PriceFormatted
+                        price={product_price}
+                        oldPrice={true}
+
+                        priceFS={18}
+                    />
+                    {/*<span className={classes.price}>${priceAfterApplyDiscount}</span>*/}
+                    {/*<span className={classes.decimal}>{priceAfterApplyDiscount.split('.')[1]}</span>*/}
                 </div>
-                <div className={classes['product-actual-price']}>
-                    <span className={classes['product-actual-price-decimal']}>{`$${product_price}`}</span>
-                </div>
+                {/*<div className={classes['product-actual-price']}>*/}
+                {/*    <span className={classes['product-actual-price-decimal']}>{`$${product_price}`}</span>*/}
+                {/*</div>*/}
             </div>
 
             <p className={classes['product-sub-heading']}>Select size</p>

@@ -1,4 +1,4 @@
-import classes from './CartProduct.module.css';
+import classes from './CartProduct.module.scss';
 import PriceFormatted from "../../../component/priceFormat/PriceFormatted";
 
 const CartProduct = ({color, imageUrl, price, quantity, discount, size, title}) => {
@@ -22,6 +22,9 @@ const CartProduct = ({color, imageUrl, price, quantity, discount, size, title}) 
                         <button>Save for later</button>
                     </div>
                 </div>
+            </div>
+            <div>
+                here
             </div>
             <div className={classes['cart-item-part-price']}>
                 <PriceFormatted
