@@ -1,7 +1,7 @@
 import classes from './CheckoutPlaceOrder.module.css';
-import Button from "../../component/button/Button";
+import Button from "../../../component/button/Button";
 import {useSelector} from "react-redux";
-import PriceFormatted from "../../component/priceFormat/PriceFormatted";
+import PriceFormatted from "../../../component/priceFormat/PriceFormatted";
 
 const CheckoutPlaceOrder = () => {
     const totalQuantity = useSelector(state => state.cart.totalQuantity);
@@ -17,8 +17,8 @@ const CheckoutPlaceOrder = () => {
                     name='Place your order'
                 />
                 <div className={classes.help}>
-                    <span>By placing your order, you agree to <a href='/#'>R&Y Doll's privacy notice</a> and <a
-                        href='/#'>conditions of use.</a></span>
+                    <span>By placing your order, you agree to <a href='/client/src/pages#'>R&Y Doll's privacy notice</a> and <a
+                        href='/client/src/pages#'>conditions of use.</a></span>
                 </div>
             </div>
 

@@ -13,19 +13,22 @@ import Kids from "./pages/kids/Kids";
 import Men from "./pages/men/Men";
 import Women from "./pages/women/Women";
 import ProductDetails from "./pages/productDetail/ProductDetails";
-
-import Cart from "./pages/cart/Cart";
+/* login */
 import Login from "./pages/login/Login";
 import ForgotPass from "./pages/login/ForgotPass";
 import CreateAccount from "./pages/login/CreateAccount";
-
-import Profile from "./pages/profile/Profile";
-
+/* cart */
+import Cart from "./pages/cart/Cart";
+import ShoppingCart from "./pages/cart/shoppingCart/ShoppingCart";
+import WishList from "./pages/cart/wishList/WishList";
+import Checkout from "./pages/cart/checkout/Checkout";
+import OrderComplete from "./pages/cart/orderComplete/OrderComplete";
 /* firebase */
 import {initialize} from "./helper/firebase/Firebase_init";
 import {loginSliceActions} from "./pages/login/login-slice";
 import {cartSliceActions} from "./pages/cart/cart-slice";
-
+/* profile */
+import Profile from "./pages/profile/Profile";
 import ProfileGeneral from "./pages/profile/profileGeneral/ProfileGeneral";
 import ProfileYourOrder from "./pages/profile/profileYourOrders/ProfileYourOrders";
 import ProfileLoginAndSecurity from "./pages/profile/profileLoginAndSecurity/ProfileLoginAndSecurity";
@@ -33,7 +36,6 @@ import ProfileYourPayments from "./pages/profile/profileYourPayments/ProfileYour
 import ProfileYourMessages from "./pages/profile/profileYourMessage/ProfileYourMessages";
 import ProfileArchivedOrders from "./pages/profile/profileArchivedOrder/ProfileArchivedOrders";
 import ProfileWishList from "./pages/profile/profileWishList/ProfileWishList";
-import Checkout from "./pages/checkout/Checkout";
 
 initialize();
 
@@ -84,9 +86,15 @@ const App = () => {
                     <Route path='/accessories' element={<Accessories/>}/>
                 </Route>
 
+                {userIsLoggedIn &&
+                <Route path='/cart' element={<Cart/>}>
+                    <Route path='shoppingCart' element={<ShoppingCart/>}/>
+                    <Route path='wishList' element={<WishList/>}/>
+                    <Route path='checkout' element={<Checkout/>}/>
+                    <Route path='orderComplete' element={<OrderComplete/>}/>
+                </Route>}
+
                 <Route path='/productDetails' element={<ProductDetails/>}/>
-                <Route path='/cart' element={<Cart/>}/>
-                <Route path='/checkout' element={<Checkout/>}/>
 
                 {!userIsLoggedIn && <Route path='/login' element={<Login/>}/>}
                 <Route path='/forgotPassword' element={<ForgotPass/>}/>
@@ -94,7 +102,7 @@ const App = () => {
 
                 {userIsLoggedIn &&
                     <Route path='/profile' element={<Profile/>}>
-                        <Route index element={<ProfileGeneral/>}/>
+                        <Route element={<ProfileGeneral/>}/>
                         <Route path='general' element={<ProfileGeneral/>}/>
                         <Route path='yourOrder' element={<ProfileYourOrder/>}/>
                         <Route path='loginAndSecurity' element={<ProfileLoginAndSecurity/>}/>

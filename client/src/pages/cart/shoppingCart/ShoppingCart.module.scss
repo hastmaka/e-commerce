@@ -1,0 +1,31 @@
+.cart-table {
+    padding: 40px;
+    border: 1px solid var(--border);
+    background: var(--bgColor);
+    width: 100%;
+
+    .table {
+        vertical-align: middle !important;
+        background: #fff none repeat scroll 0 0;
+        border: medium none;
+        //text-align: center;
+        width: 100%;
+
+        thead {
+            text-align: center;
+
+            th {
+                text-transform: uppercase;
+                background: #f6f6f6 none repeat scroll 0 0;
+                font-weight: 700;
+                padding: 10px 10px;
+                white-space: nowrap;
+            }
+        }
+
+        td {
+            padding: 10px 0;
+            vertical-align: middle;
+        }
+    }
+}

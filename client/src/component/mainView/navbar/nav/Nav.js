@@ -61,13 +61,13 @@ const Nav = ({data}) => {
                         </div>
                         <div>
                             <NavLink
-                                to={'/profile'}>
+                                to={'/profile/general'}>
                                 <RiUserFollowFill className={classes['nav-icon']}/>
                             </NavLink>
                         </div>
                         <div>
                             <NavLink
-                                to={'/cart'}
+                                to={'/cart/shoppingCart'}
                                 onClick={() => cartItemsHandler()}>
                                 <MdOutlineShoppingCart className={classes['nav-icon']}/>
                             </NavLink>

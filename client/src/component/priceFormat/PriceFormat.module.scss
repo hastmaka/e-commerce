@@ -1,23 +1,27 @@
 @use 'src/scss/index';
+$color: #646464;
 
 .price-formatted-container {
     @include index.displayFlex(null, null, center)
 }
 
 .price {
-    font-weight: 600;
+    color: $color;
+    font-weight: 900;
 }
 
 .decimal {
+    color: $color;
     position: relative;
-    font-weight: 600;
-    font-size: 12px;
+    font-weight: 900;
+    font-size: 16px;
     top: -0.3rem;
 }
 
 .currency-symbol {
+    color: $color;
     position: relative;
-    font-weight: 600;
-    font-size: 12px;
+    font-weight: 900;
+    font-size: 16px;
     top: -0.5rem;
 }
