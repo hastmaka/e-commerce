@@ -1,4 +1,4 @@
-import classes from "./Login.module.css";
+import classes from "./Login.module.scss";
 import {useSelector} from "react-redux";
 
 const IsLoading = () => {

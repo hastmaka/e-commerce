@@ -34,7 +34,7 @@ const Nav = ({data}) => {
     }
 
     const cartItemsHandler = () => {
-        if (location.pathname !== '/cart') {
+        if (location.pathname !== '/cart/shoppingCart') {
             dispatch(fetchData(`api/cart/all/${loginStore.user.user_id}`, cartSliceActions.showItemsInCart));
             emptyCart()
         }

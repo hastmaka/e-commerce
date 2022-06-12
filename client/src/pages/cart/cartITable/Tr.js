@@ -3,8 +3,10 @@ import {useState} from "react";
 import PriceFormatted from "../../../component/priceFormat/PriceFormatted";
 /* icons */
 import {RiDeleteBin3Line, RiHeart2Fill} from 'react-icons/ri';
+import {MdAddShoppingCart} from 'react-icons/md';
 
-const Tr = ({color, imageUrl, price, quantity, discount, size, title}) => {
+const Tr = ({imageUrl, title, size, color, price, quantity, discount, actions, typeOfTable}) => {
+    // debugger
     let [quantityInput, setQuantityInput ] = useState(quantity);
 
     const handleSub = () => {
@@ -40,12 +42,13 @@ const Tr = ({color, imageUrl, price, quantity, discount, size, title}) => {
                 />
             </td>
             {/*quantity*/}
-            <td>
+            {typeOfTable === 'shoppingCart' && <td>
                 <div className={classes['add-sub-container']}>
                     <div
                         className={classes.sub}
                         onClick={handleSub}
-                    >-</div>
+                    >-
+                    </div>
                     <input
                         className={classes['add-sub-input']}
                         type="text"
@@ -55,21 +58,39 @@ const Tr = ({color, imageUrl, price, quantity, discount, size, title}) => {
                     <div
                         className={classes.add}
                         onClick={handleAdd}
-                    >+</div>
+                    >+
+                    </div>
                 </div>
-            </td>
+            </td>}
+            {/* stock status*/}
+            {typeOfTable === 'wishList' && <td>
+                <div style={{textAlign: 'center'}}>
+                    1
+                </div>
+            </td>}
             {/*total*/}
-            <td style={{textAlign: 'center'}}>
+            {typeOfTable === 'shoppingCart' && <td style={{textAlign: 'center'}}>
                 <PriceFormatted
                     price={price * quantity}
                 />
-            </td>
+            </td>}
+            {/* add to cart */}
+            {typeOfTable === 'wishList' && <td>
+                <div style={{textAlign: 'center'}}>
+                    <MdAddShoppingCart className={classes['add-to-cart-icon']}/>
+                </div>
+            </td>}
             {/*actions*/}
             <td style={{textAlign: 'center'}}>
                 <div className={classes['cart-product-options']}>
-                    <RiDeleteBin3Line/>
-                    <div className={classes.separator}/>
-                    <RiHeart2Fill/>
+                    {actions[0] === 'delete' &&
+                        <RiDeleteBin3Line className={classes['delete-icon']}/>}
+                    {actions[1] === 'wishList' &&
+                        <>
+                            <div className={classes.separator}/>
+                            <RiHeart2Fill className={classes['wish-list-icon']}/>
+                        </>
+                    }
                 </div>
             </td>
         </tr>

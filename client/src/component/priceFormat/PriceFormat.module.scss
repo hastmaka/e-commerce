@@ -7,13 +7,13 @@ $color: #646464;
 
 .price {
     color: $color;
-    font-weight: 900;
+    font-weight: 600;
 }
 
 .decimal {
     color: $color;
     position: relative;
-    font-weight: 900;
+    font-weight: 600;
     font-size: 16px;
     top: -0.3rem;
 }
@@ -21,7 +21,7 @@ $color: #646464;
 .currency-symbol {
     color: $color;
     position: relative;
-    font-weight: 900;
+    font-weight: 600;
     font-size: 16px;
     top: -0.5rem;
 }

@@ -1,5 +1,5 @@
 import {useForm} from 'react-hook-form';
-import global from "../../../login/Login.module.css";
+import global from "../../../login/Login.module.scss";
 import classes from './Review.module.css';
 import MessageCard from "./MessageCard";
 import RatingComponent from "./RatingComponent";

@@ -1,0 +1,30 @@
+@use 'src/scss/index';
+
+.input-container {
+    @include index.displayFlex(row, null, null);
+    position: relative;
+    margin: 26px 0;
+
+    input {
+        &::placeholder {
+            color: var(--placeholderColor);
+        }
+
+        &:focus::placeholder {
+            color: #f1f1f1;
+        }
+    }
+
+    span {
+        position: absolute;
+        top: 44px;
+        color: red;
+        font-size: 10px;
+        margin: 0 0 0 10px;
+    }
+}
+
+.disabled {
+    pointer-events: none;
+    color: #c2c2c2 !important;
+}

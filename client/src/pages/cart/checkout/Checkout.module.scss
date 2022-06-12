@@ -1,0 +1,31 @@
+@use 'src/scss/index';
+
+.checkout-container {
+    @include index.displayFlex(row, null, null);
+    background: #fff none repeat scroll 0 0;
+    padding: 40px;
+
+
+    .billing-detail {
+        @include index.displayFlex(column, null, null);
+        width: 50%;
+
+        h4 {
+            position: relative;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 28px;
+            color: #9a9999;
+
+            &::before {
+                background: #eee none repeat scroll 0 0;
+                bottom: 0;
+                content: "";
+                height: 2px;
+                left: 0;
+                position: absolute;
+                width: 50px;
+            }
+        }
+    }
+}

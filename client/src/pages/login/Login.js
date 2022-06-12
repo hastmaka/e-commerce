@@ -1,4 +1,4 @@
-import classes from './Login.module.css';
+import classes from './Login.module.scss';
 import {useDispatch, useSelector} from 'react-redux';
 import {NavLink, useNavigate} from 'react-router-dom';
 import IsLoading from './IsLoading';
@@ -10,6 +10,21 @@ import {loginSliceActions} from './login-slice';
 import {fetchData} from "../../helper/Api";
 import {cartSliceActions} from "../cart/cart-slice";
 import Button from "../../component/button/Button";
+import Input from "../../component/input/Input";
+
+const items = [{
+    name: 'email',
+    value: 'Email',
+    placeholder: 'Email',
+    patternValue: /\S+@\S+\.\S+/,
+    message: 'Entered value does not match email format.'
+}, {
+    name: 'password',
+    value: 'Password',
+    placeholder: 'Password',
+    minLengthValue: 6,
+    minLengthMessage: 'Min length is 6'
+}]
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -23,7 +38,7 @@ const Login = () => {
     });
 
     const onSubmit = ({email, password}) => {
-        // debugger
+        debugger
         const authentication = getAuth();
         dispatch(loginSliceActions.isLoadingToggle());
         signInWithEmailAndPassword(authentication, email, password).then(res => {
@@ -55,34 +70,24 @@ const Login = () => {
         <div className={classes['login-form-container']}>
             <form onSubmit={handleSubmit(onSubmit)} className={classes['login-form']}>
                 <h2 style={{textAlign: 'center'}}>Log In</h2>
-                <div className={classes['login-form-fields']}>
-                    <input
-                        placeholder='Email'
-                        {...register('email', {
-                            required: 'Field Required',
-                            pattern: {
-                                value: /\S+@\S+\.\S+/,
-                                message: 'Entered value does not match email format.'
-                            }
-                        })}
-                    />
-                    {errors.email && <span role='alert'>{errors.email.message}</span>}
-                </div>
-                <div className={classes['login-form-fields']}>
-                    <input
-                        type="password"
-                        placeholder='Password'
-                        {...register("password", {
-                            required: "Field Required",
-                            minLength: {
-                                value: 6,
-                                message: "min length is 6"
-                            }
-                        })}
-                    />
-                    {errors.password && <span role="alert">{errors.password.message}</span>}
-                </div>
+                {items.map(item =>
+                    <Input
+                        key={item.name}
+                        errors={errors}
+                        register={register}
+                        required={true}
+                        width={100}
+                        placeholder={item.placeholder}
+                        label={item.name}
+                        value={item.value}
+                        ccsClass={item.disabled ? 'disabled' : ''}
+                        patternValue={item.patternValue}
+                        patternErrorMessage={item.message}
+                        minLengthValue={item.minLengthValue}
+                        minLengthMessage={item.minLengthMessage}
 
+                    />
+                )}
                 <div className={classes['login-form-fields-links']}>
                     <NavLink to={'/forgotPassword'}>Forgot Pass</NavLink>
                     <NavLink to={'/createAccount'}>Create Account</NavLink>

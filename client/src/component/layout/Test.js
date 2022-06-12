@@ -1,31 +1,45 @@
 import classes from './test.module.scss';
+import Input_test from "./Input_test";
+import {useForm} from "react-hook-form";
 
-import {RiFacebookBoxFill} from 'react-icons/ri';
+const items = [
+    {name: 'name', value: 'Name', placeholder: 'Enter your Name...'},
+    {name: 'phone', value: 'test', placeholder: 'Enter your Phone...'},
+    {name: 'address', value: 'Address', placeholder: 'Enter your Address...'},
+    {
+        name: 'email',
+        value: 'Email',
+        placeholder: 'Enter your Email...',
+        patternValue: /\S+@\S+\.\S+/,
+        message: 'Entered value does not match email format.'
+    },
+]
 
 const Test = () => {
+    const {reset, register, handleSubmit, formState: {errors}} = useForm();
+    const onSubmit = (data) => {
+      debugger
+    }
     return (
         <div className={classes.container}>
-            <div className={classes.card}>
-                <div className={classes.content}>
-                    <div className={classes.img}><img src="https://unsplash.it/200/200" alt=""/></div>
-                    <div className={classes['card-content']}>
-                        <h3>Luis Molina <br/><span>Web Developer</span></h3>
-                    </div>
-                </div>
-                <div>
-                    <ul className={classes.sci}>
-                        <li>
-                            <a href=""><i aria-hidden={true}><RiFacebookBoxFill/></i></a>
-                        </li>
-                        <li>
-                            <a href=""><i aria-hidden={true}><RiFacebookBoxFill/></i></a>
-                        </li>
-                        <li>
-                            <a href=""><i aria-hidden={true}><RiFacebookBoxFill/></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <form onSubmit={handleSubmit(onSubmit)} style={{width: '100%'}}>
+                {items.map(item =>
+                    <Input_test
+                        key={item.name}
+                        errors={errors}
+                        register={register}
+                        required={true}
+                        width={20}
+                        message={item.message}
+                        placeholder={item.placeholder}
+                        patternValue={item.patternValue}
+                        label={item.name}
+                        value={item.value}
+                        ccsClass={item.disabled ? 'disabled' : ''}
+                    />
+                )}
+                <button type='submit'>Submit</button>
+            </form>
         </div>
     );
 }

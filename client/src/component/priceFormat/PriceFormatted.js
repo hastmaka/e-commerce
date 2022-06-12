@@ -1,6 +1,6 @@
 import classes from './PriceFormat.module.scss';
 
-const PriceFormatted = ({price, currencyTop, currencyFS, priceFS, decimalFS, decimalTop, oldPrice}) => {
+const PriceFormatted = ({price, currencyTop, currencyFS, priceFS, decimalFS, decimalTop, oldPrice, color}) => {
     return (
         <div className={`${classes['price-formatted-container']} d-block`}>
             <span
@@ -8,7 +8,8 @@ const PriceFormatted = ({price, currencyTop, currencyFS, priceFS, decimalFS, dec
                 style={{
                     top: `${currencyTop ? currencyTop : -0.3}rem`,
                     fontSize: `${currencyFS ? currencyFS : 12}px`,
-                    opacity: oldPrice ? 0.5 : ''
+                    opacity: oldPrice ? 0.5 : '',
+                    color: color ? color : ''
             }}>$</span>
 
             {price > 0 ?
@@ -17,7 +18,8 @@ const PriceFormatted = ({price, currencyTop, currencyFS, priceFS, decimalFS, dec
                     style={{
                         fontSize: `${priceFS ? priceFS : 16}px`,
                         textDecoration: oldPrice ? 'line-through' : '',
-                        opacity: oldPrice ? 0.5 : ''
+                        opacity: oldPrice ? 0.5 : '',
+                        color: color ? color : ''
                 }}>
               {price.toFixed(2).split('.')[0]}
             </span> : ''}
@@ -29,7 +31,8 @@ const PriceFormatted = ({price, currencyTop, currencyFS, priceFS, decimalFS, dec
                         fontSize: `${decimalFS ? decimalFS : 10}px`,
                         top: `${decimalTop ? decimalTop : -0.3}rem`,
                         textDecoration: oldPrice ? 'line-through' : '',
-                        opacity: oldPrice ? 0.5 : ''
+                        opacity: oldPrice ? 0.5 : '',
+                        color: color ? color : ''
                 }}>
               {price.toFixed(2).split('.')[1]}
             </span> : ''}

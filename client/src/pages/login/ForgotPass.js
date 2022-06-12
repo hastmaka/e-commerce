@@ -1,4 +1,4 @@
-import classes from "./Login.module.css";
+import classes from "./Login.module.scss";
 import {NavLink, useNavigate} from "react-router-dom";
 import IsLoading from "./IsLoading";
 import {useForm} from "react-hook-form";

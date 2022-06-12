@@ -6,6 +6,7 @@ const LiCart = ({title, href}) => {
         <li>
             <NavLink
                 to={href}
+                className={link => link.isActive ? classes.active : ''}
             >{title}</NavLink>
         </li>
     );

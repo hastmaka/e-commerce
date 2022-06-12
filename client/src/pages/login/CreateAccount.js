@@ -1,4 +1,4 @@
-import classes from "./Login.module.css";
+import classes from "./Login.module.scss";
 import {NavLink, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";

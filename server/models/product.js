@@ -16,9 +16,9 @@ module.exports = (sequelize, dataTypes) => {
     });
 
     Model.associate = (models) => {
+        Model.belongsToMany(models.size, { foreignKey: 'product_product_id', through: models.product_size_map, onDelete: "NO ACTION", onUpdate: "NO ACTION" });
         Model.hasMany(models.image, {foreignKey: 'product_product_id', onDelete: 'NO ACTION', onUpdate: 'NO ACTION'});
         Model.hasMany(models.review, {foreignKey: 'product_product_id', onDelete: 'NO ACTION', onUpdate: 'NO ACTION'});
-        Model.belongsToMany(models.size, { foreignKey: 'product_product_id', through: models.product_size_map, onDelete: "NO ACTION", onUpdate: "NO ACTION" });
         Model.hasMany(models.product_size_map, {foreignKey: 'product_product_id', onDelete: 'NO ACTION', onUpdate: 'NO ACTION'});
 
     }
