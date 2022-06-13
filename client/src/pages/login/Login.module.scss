@@ -6,16 +6,18 @@
     width: 100%;
     height: 100vh;
     background: var(--baseBgColor);
+
+    .login-form {
+        border: 1px solid var(--border);
+        background: var(--bgColor);
+        box-shadow: 5px 5px 10px -10px rgba(101, 98, 98, 0.56);
+        border-radius: 5px;
+        padding: 20px;
+        width: 300px;
+    }
 }
 
-.login-form {
-    border: 1px solid var(--border);
-    background: var(--bgColor);
-    box-shadow: 5px 5px 10px -10px rgba(101, 98, 98, 0.56);
-    border-radius: 5px;
-    padding: 20px;
-    width: 300px;
-}
+
 
 .login-form input::placeholder {
     color: var(--placeholderColor);

@@ -5,8 +5,31 @@ import {useForm} from "react-hook-form";
 import {createUserWithEmailAndPassword, getAuth} from "firebase/auth";
 import {fetchData} from "../../helper/Api";
 import Button from "../../component/button/Button";
-import {phoneFormat} from "../../helper/Helper";
-import {useState} from "react";
+import Input from "../../component/input/Input";
+
+const items = [{
+    name: 'email',
+    placeholder: 'Email',
+    patternValue: /\S+@\S+\.\S+/,
+    message: 'Entered value does not match email format.'
+}, {
+    name: 'password',
+    placeholder: 'Password',
+    type: 'password',
+    minLengthValue: 6,
+    minLengthMessage: 'Min length is 6'
+}, {
+    name: 'confirmPassword',
+    placeholder: 'Confirm Password',
+    type: 'password',
+    minLengthValue: 6,
+    minLengthMessage: 'Min length is 6'
+},
+    {name: 'firstName', placeholder: 'First Name'},
+    {name: 'lastName', placeholder: 'Last Name'},
+    {name: 'address', placeholder: 'Address'},
+    {name: 'phone', placeholder: 'Phone'}
+]
 
 const CreateAccount = () => {
     const dispatch = useDispatch();
@@ -16,12 +39,8 @@ const CreateAccount = () => {
         defaultValues: {...loginStore.formFields}
     });
 
-    const [phone, setPhone] = useState('');
-    const handleChange = (e) => {
-        setPhone(prevState => (phoneFormat(e.target.value, prevState.phone)));
-    };
-
     const onSubmit = ({email, password, confirmPassword, firstName, lastName, address, phone}) => {
+        debugger
         if(password === confirmPassword){
             const authentication = getAuth();
             createUserWithEmailAndPassword(authentication, email, password).then(res => {
@@ -55,93 +74,24 @@ const CreateAccount = () => {
             <form autoComplete='off' onSubmit={handleSubmit(onSubmit)} className={classes['login-form']}>
                 <h2 style={{textAlign: 'center'}}>Create Account</h2>
 
-                <div className={classes['login-form-fields']}>
-                    <input
-                        {...register('email', {
-                            required: 'Field Required',
-                            autoComplete: false,
-                            pattern: {
-                                value: /\S+@\S+\.\S+/,
-                                message: 'Entered value does not match email format.'
-                            }
-                        })}
-                        placeholder='Email'
+                {items.map(item =>
+                    <Input
+                        key={item.name}
+                        errors={errors}
+                        register={register}
+                        required={true}
+                        width={item.width ? item.width : 100}
+                        placeholder={item.placeholder}
+                        label={item.name}
+                        type={item.type}
+                        ccsClass={item.disabled ? 'disabled' : ''}
+                        patternValue={item.patternValue}
+                        patternErrorMessage={item.message}
+                        minLengthValue={item.minLengthValue}
+                        minLengthMessage={item.minLengthMessage}
+
                     />
-                    {errors.email && <span role='alert'>{errors.email.message}</span>}
-                </div>
-
-                <div className={classes['login-form-fields']}>
-                    <input
-                        {...register("password", {
-                            required: "Field Required",
-                            minLength: {
-                                value: 6,
-                                message: "min length is 6"
-                            }
-                        })}
-                        type="password"
-                        placeholder='Password'
-                    />
-                    {errors.password && <span role="alert">{errors.password.message}</span>}
-                </div>
-                <div className={classes['login-form-fields']}>
-                    <input
-                        {...register("confirmPassword", {
-                            required: "Field Required",
-                            minLength: {
-                                value: 6,
-                                message: "min length is 6"
-                            }
-                        })}
-                        type="password"
-                        placeholder='Confirm Password'
-                    />
-                    {errors.password && <span role="alert">{errors.password.message}</span>}
-
-                    <div className={classes['first-last-name']}>
-                        <input
-                            {...register('firstName', {
-                                required: 'Field Required',
-                            })}
-                            placeholder='First Name'
-                        />
-                        {errors.firstName && <span role='alert'>{errors.firstName.message}</span>}
-
-                        <input
-                            {...register('lastName', {
-                                required: 'Field Required',
-                            })}
-                            placeholder='Last Name'
-                        />
-                        {errors.lastName && <span role='alert'>{errors.lastName.message}</span>}
-                    </div>
-
-                    <div className={classes['login-form-fields']}>
-                        <input
-                            {...register('address', {
-                                required: 'Field Required',
-                            })}
-                            placeholder='Address'
-                        />
-                        {errors.address && <span role='alert'>{errors.address.message}</span>}
-                    </div>
-
-                    <div className={`${classes['login-form-fields']} ${classes.phone}`}>
-                        <input
-                            {...register('phone', {
-                                required: 'Field Required',
-                            })}
-                            type='phone'
-                            placeholder='Phone'
-                            autoComplete='off'
-                            value={phone}
-                            onChange={e => handleChange(e)}
-                        />
-                        {errors.phone && <span role='alert'>{errors.phone.message}</span>}
-                    </div>
-
-
-                </div>
+                )}
 
                 <div className={classes['login-form-btn']}>
                     <NavLink

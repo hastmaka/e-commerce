@@ -9,15 +9,25 @@ const ProfileGeneral = () => {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
     const user = useSelector(store => store.login.user);
-    const items = [
-        {name: 'Name', value: `${user.user_first_name} ${user.user_last_name}`, disabled: true},
-        {name: 'Email', value: user.user_email, disabled: true},
-        {name: 'Phone', value: user.user_phone, disabled: false},
-        {name: 'Address', value: user.user_address, disabled: false},
-    ];
+    const items = [{
+        name: 'name',
+        value: `${user.user_first_name} ${user.user_last_name}`,
+        disabled: true
+    }, {
+        name: 'email',
+        value: user.user_email,
+        disabled: true
+    }, {
+        name: 'phone',
+        value: user.user_phone,
+        disabled: false
+    }, {
+        name: 'address',
+        value: user.user_address,
+        disabled: false
+    }];
 
     const handleTempData = () => {
-        // debugger
         setShowModal(true);
         dispatch(modalSliceActions.setTemData(items))
     }

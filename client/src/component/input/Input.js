@@ -3,18 +3,19 @@ import {phoneFormat} from "../../helper/Helper";
 import {useState} from "react";
 
 const Input = ({
-       label,
-       value,
-       errors,
-       placeholder,
-       ccsClass,
-       register,
-       required,
-       width,
-       patternValue,
-       patternErrorMessage,
-       minLengthValue,
-       minLengthMessage
+    label,
+    value,
+    type,
+    errors,
+    placeholder,
+    disable,
+    register,
+    required,
+    width,
+    patternValue,
+    patternErrorMessage,
+    minLengthValue,
+    minLengthMessage
 }) => {
     // debugger
     const [phone, setPhone] = useState('');
@@ -38,19 +39,23 @@ const Input = ({
                         message: minLengthValue ? minLengthMessage : ''
                     }
                 })}
-                className={ccsClass && `${classes[`${ccsClass}`]}`}
+                className={disable && `${classes.disabled}`}
                 style={{width: `${width}.%`}}
                 value={
                     label === 'email' ? tempState.email :
                     label === 'password' ? tempState.password :
+                    label === 'confirmPassword' ? tempState.confirmPassword :
+                    label === 'firstName' ? tempState.firstName :
+                    label === 'lastName' ? tempState.lastName :
                     label === 'phone' ? phone :
                     label === 'address' ? tempState.address :
-                    label === 'name' ? tempState.name :
-                    value
+                    label === 'name' ? tempState.name : value
+
                 }
+
                 onChange={e => handleChange(e)}
-                size='sm'
-                placeholder={placeholder}
+                type={type ? type : 'text'}
+                placeholder={placeholder ? placeholder : value}
             />
             {errors[`${label}`] && <span role='alert'>{errors[`${label}`].message}</span>}
         </div>
@@ -68,8 +73,9 @@ register={register} - register from useForm
 required={true} - boolean in case u want the field mandatory
 width={20} - can be dynamic or fix for all same size
 placeholder={item.placeholder} - placeholder
-label={item.name} - name which it's going to be registered on useForm
-value={item.value} -
+value={item.value}
+label={item.name} - name which it's going to be registered on useForm (always lowercase)
+type={item.type} - type of input
 ccsClass={item.disabled ? 'disabled' : ''} - in case u want the field only read
 patternValue={item.patternValue} - pattern the field has to fulfill
 patternErrorMessage={item.patternErrorMessage} - in case of pattern error this is the message to show

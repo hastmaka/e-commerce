@@ -14,16 +14,15 @@ import Input from "../../component/input/Input";
 
 const items = [{
     name: 'email',
-    value: 'Email',
     placeholder: 'Email',
     patternValue: /\S+@\S+\.\S+/,
     message: 'Entered value does not match email format.'
 }, {
     name: 'password',
-    value: 'Password',
     placeholder: 'Password',
+    type: 'password',
     minLengthValue: 6,
-    minLengthMessage: 'Min length is 6'
+    minLengthMessage: 'Min length is 6',
 }]
 
 const Login = () => {
@@ -38,7 +37,6 @@ const Login = () => {
     });
 
     const onSubmit = ({email, password}) => {
-        debugger
         const authentication = getAuth();
         dispatch(loginSliceActions.isLoadingToggle());
         signInWithEmailAndPassword(authentication, email, password).then(res => {
@@ -79,7 +77,7 @@ const Login = () => {
                         width={100}
                         placeholder={item.placeholder}
                         label={item.name}
-                        value={item.value}
+                        type={item.type}
                         ccsClass={item.disabled ? 'disabled' : ''}
                         patternValue={item.patternValue}
                         patternErrorMessage={item.message}

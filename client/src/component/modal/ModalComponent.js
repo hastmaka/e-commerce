@@ -21,7 +21,7 @@ const ModalComponent = ({show, title, onHide}) => {
     return (
         <Modal
             show={show}
-            size="lg"
+            size="md"
             centered
         >
             <Modal.Header>
@@ -33,13 +33,20 @@ const ModalComponent = ({show, title, onHide}) => {
                 <Modal.Body>
                     {items.length > 0 && items.map(item =>
                         <Input
-                            register={register}
-                            required
-                            label={item.name}
                             key={item.name}
-                            iconName={item.name}
+                            errors={errors}
+                            register={register}
+                            required={true}
+                            disable={item.disabled}
+                            width={100}
+                            placeholder={item.placeholder}
                             value={item.value}
-                            ccsClass={item.disabled ? 'disabled' : ''}
+                            label={item.name}
+                            type={item.type}
+                            patternValue={item.patternValue}
+                            patternErrorMessage={item.message}
+                            minLengthValue={item.minLengthValue}
+                            minLengthMessage={item.minLengthMessage}
                         />
                     )}
                 </Modal.Body>

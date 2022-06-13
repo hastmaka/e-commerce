@@ -6,7 +6,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {getAuth, sendPasswordResetEmail} from 'firebase/auth';
 import {loginSliceActions} from "./login-slice";
 import Button from "../../component/button/Button";
+import Input from "../../component/input/Input";
 
+const items = [{
+    name: 'email',
+    placeholder: 'Email',
+    patternValue: /\S+@\S+\.\S+/,
+    message: 'Entered value does not match email format.'
+}]
 
 const ForgotPass = () => {
     const dispatch = useDispatch();
@@ -41,19 +48,24 @@ const ForgotPass = () => {
                 <p className={classes['forgot-pass-help']}>Please enter your email and we send it back to you a recover
                     email.</p>
 
-                <div className={classes['login-form-fields']}>
-                    <input
-                        placeholder='Email'
-                        {...register('email', {
-                            required: 'Field Required',
-                            pattern: {
-                                value: /\S+@\S+\.\S+/,
-                                message: 'Entered value does not match email format.'
-                            }
-                        })}
+                {items.map(item =>
+                    <Input
+                        key={item.name}
+                        errors={errors}
+                        register={register}
+                        required={true}
+                        width={100}
+                        placeholder={item.placeholder}
+                        label={item.name}
+                        type={item.type}
+                        ccsClass={item.disabled ? 'disabled' : ''}
+                        patternValue={item.patternValue}
+                        patternErrorMessage={item.message}
+                        minLengthValue={item.minLengthValue}
+                        minLengthMessage={item.minLengthMessage}
+
                     />
-                    {errors.email && <span role='alert'>{errors.email.message}</span>}
-                </div>
+                )}
 
                 {loginStore.isLoading && <IsLoading/>}
 
