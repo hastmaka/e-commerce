@@ -1,0 +1,33 @@
+@use 'src/scss/index';
+
+.order-complete-container {
+    @include index.displayFlex(column, center, center);
+
+    gap: 20px;
+
+    .order-thanks {
+        @include index.displayFlex(row, center, center);
+        height: 70px;
+        background: #fff none repeat scroll 0 0;
+        color: #545454;
+        width: 100%;
+    }
+
+}
+
+.order-receive {
+    @include index.displayFlex(row, space-around, center);
+    width: 100%;
+    height: 70px;
+    background: #fff none repeat scroll 0 0;
+    color: #545454;
+
+    span {
+        text-align: center;
+    }
+}
+
+.back-to-home {
+    width: 100%;
+
+}

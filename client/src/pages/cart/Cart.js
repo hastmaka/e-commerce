@@ -1,6 +1,5 @@
 import classes from './Cart.module.scss';
-import {useSelector} from "react-redux";
-import LiCart from "./LiCart";
+import LiCart from "./cartComponents/LiCart";
 import {Outlet} from "react-router-dom";
 
 const cartLinks = [

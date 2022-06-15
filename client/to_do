@@ -1,6 +1,8 @@
 FIX
 ________________________________________________________
 login form submit with enter key
+checkout Field Required has problem
+         Disable field required when checkbox is checked DONE
 
 when token expired reload the view. DONE
 product detail comes with average rating too. DONE

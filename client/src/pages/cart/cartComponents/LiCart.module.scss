@@ -1,0 +1,28 @@
+.li-cart{
+    width: 25%;
+    text-align: center;
+    list-style: none;
+
+    a {
+        background: #fff none repeat scroll 0 0;
+        color: #999;
+        display: block;
+        font-weight: 700;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        //cursor: pointer;
+
+        &:hover {
+            color: whitesmoke !important;
+            background: var(--swatch_10) !important;
+        }
+    }
+}
+
+.active {
+    color: whitesmoke !important;
+    background: var(--swatch_10) !important;
+}

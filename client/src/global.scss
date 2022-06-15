@@ -6,7 +6,7 @@
 
     --font-size-des: 12px;
     --aColor: #3d3dcb;
-    --placeholderColor: #dcdcdc;
+    --placeholderColor: #b9b9b9;
 
     --smoothT: 200ms ease-in-out;
 
@@ -34,28 +34,6 @@
 
 $table-cell-vertical-align: middle;
 
-
-/*general*/
-/*a {*/
-/*    text-decoration: none !important;*/
-/*    border-bottom: 1px solid transparent;*/
-/*    color: var(--aColor);*/
-/*}*/
-
-/*a:hover {*/
-/*    border-bottom: 1px solid darkslateblue !important;*/
-/*}*/
 span {
     text-rendering: optimizeLegibility !important;
-}
-
-input {
-    outline: none !important;
-    border: 1px solid var(--border) ;
-    /*border-radius: 5px ;*/
-    padding: 10px;
-}
-input:focus{
-    box-shadow: 2px 2px 5px -5px rgba(0,0,0,0.75) ;
-    border: 1px solid #91b2ea ;
 }

@@ -74,7 +74,7 @@ const Login = () => {
                         errors={errors}
                         register={register}
                         required={true}
-                        width={100}
+                        style={{'width': '100%'}}
                         placeholder={item.placeholder}
                         label={item.name}
                         type={item.type}

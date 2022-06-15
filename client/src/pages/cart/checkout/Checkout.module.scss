@@ -1,30 +1,70 @@
 @use 'src/scss/index';
 
-.checkout-container {
+h4 {
+    position: relative;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 28px;
+    color: #9a9999;
+
+    &::before {
+        background: #eee none repeat scroll 0 0;
+        bottom: 0;
+        content: "";
+        height: 2px;
+        left: 0;
+        position: absolute;
+        width: 50px;
+    }
+}
+
+.billing-detail, .ship-to-different-address, .your-order, .payment-method {
+    @include index.displayFlex(column, null, null);
+    width: 50%;
+}
+
+.form-fix-up, .form-fix-down {
     @include index.displayFlex(row, null, null);
+    gap: 40px;
+}
+
+.form-fix-down {
+    margin-top: 40px;
+}
+
+.checkout-container {
     background: #fff none repeat scroll 0 0;
     padding: 40px;
 
-
-    .billing-detail {
+    form {
         @include index.displayFlex(column, null, null);
-        width: 50%;
+        width: 100%;
 
-        h4 {
-            position: relative;
-            font-size: 16px;
-            font-weight: 700;
-            line-height: 28px;
-            color: #9a9999;
+        .check-container {
+            margin-top: -20px;
+        }
 
-            &::before {
-                background: #eee none repeat scroll 0 0;
-                bottom: 0;
-                content: "";
-                height: 2px;
-                left: 0;
-                position: absolute;
-                width: 50px;
+        .custom-table {
+            vertical-align: middle !important;
+            background: #fff none repeat scroll 0 0;
+            border: medium none;
+            //text-align: center;
+            width: 100%;
+
+            th {
+                border-bottom: 1px solid #999;
+                text-transform: uppercase;
+                background: #f6f6f6 none repeat scroll 0 0;
+                font-weight: 700;
+                padding: 10px 30px;
+                white-space: nowrap;
+                color: #9a9999;
+            }
+
+            td {
+                border-bottom: 1px solid #e1e1e1;
+                padding: 10px 0;
+                vertical-align: middle;
             }
         }
     }

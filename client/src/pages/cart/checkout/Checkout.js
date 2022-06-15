@@ -1,41 +1,18 @@
 import classes from './Checkout.module.scss';
 import {useForm} from "react-hook-form";
-import {useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import Input from "../../../component/input/Input";
+import Button from '../../../component/button/Button';
+import BillingDetails from "./BillingDetails";
+import ShipToDifferentAddress from "./ShipToDifferentAddress";
+import YourOrder from "./YourOrder";
+import PaymentMethod from "./PaymentMethod";
 
 const Checkout = () => {
-    const user = useSelector(store => store.login.user);
-    const [tempUser, setTempUser] = useState();
-    useEffect(() => {
-        let t = setTimeout(() => setTempUser({
-            name: `${user.user_first_name} ${user.user_last_name}`,
-            email: user.user_email,
-            phone: user.user_phone,
-            contry: '',
-            state: '',
-            town: '',
-            address: user.address
-        }), 100);
-        return () => {
-            clearTimeout(t)
-        }
-    }, [user]);
+    const {register, handleSubmit, formState: {errors}} = useForm();
+    const [disable, setDisable] = useState(false)
 
-    const {reset, register, handleSubmit, formState: {errors}} = useForm();
-    // debugger
-    const items = [{
-        name: 'email',
-        value: tempUser?.email,
-        patternValue: /\S+@\S+\.\S+/,
-        message: 'Entered value does not match email format.'
-    }, {
-        name: 'password',
-        placeholder: 'Password',
-        type: 'password',
-        minLengthValue: 6,
-        minLengthMessage: 'Min length is 6',
-    }]
+    const checkHandler = (e) => {setDisable(!!e.target.checked)}
 
     const onSubmit = (data) => {
         debugger
@@ -43,33 +20,43 @@ const Checkout = () => {
 
     return (
         <div className={classes['checkout-container']}>
-            <div className={classes['billing-detail']}>
-                <h4 className={`text-uppercase`}>billing details</h4>
-                {tempUser && <form onSubmit={handleSubmit(onSubmit)}>
-                    {items.map(item =>
-                        <Input
-                            key={item.name}
-                            errors={errors}
-                            register={register}
-                            required={true}
-                            value={item.value}
-                            width={100}
-                            placeholder={item.placeholder}
-                            label={item.name}
-                            type={item.type}
-                            ccsClass={item.disabled ? 'disabled' : ''}
-                            patternValue={item.patternValue}
-                            patternErrorMessage={item.message}
-                            minLengthValue={item.minLengthValue}
-                            minLengthMessage={item.minLengthMessage}
-                        />
-                    )}
-
-                    <button type='submit'>click</button>
-                </form>}
-                {!tempUser && <div>No user</div>}
-            </div>
-            <div>a</div>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className={classes['form-fix-up']}>
+                    <BillingDetails errors={errors} register={register} disable={disable}/>
+                    <ShipToDifferentAddress errors={errors} register={register} disable={disable}/>
+                </div>
+                <div className={classes['check-container']}>
+                    <Input
+                        key={'check'}
+                        errors={errors}
+                        register={register}
+                        required={false}
+                        checkHandler={checkHandler}
+                        style={{
+                            width: '20px',
+                            height: '20px',
+                            accentColor: 'var(--swatch_10)',
+                            marginRight: '10px'
+                        }}
+                        placeholder={'test'}
+                        label={'check'}
+                        innerHtml={'Use same address for shipping'}
+                        type={'checkbox'}
+                    />
+                </div>
+                <div className={classes['form-fix-down']}>
+                    <YourOrder/>
+                    <PaymentMethod/>
+                </div>
+                <>
+                    <Button
+                        type='submit'
+                        ccsClass='normal'
+                        name='Place Order'
+                        justifyContent='right'
+                    />
+                </>
+            </form>
         </div>
     )
 }

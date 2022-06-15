@@ -1,5 +1,5 @@
 import classes from '../shoppingCart/ShoppingCart.module.scss';
-import Tr from "../cartITable/Tr";
+import Tr from "../cartComponents/Tr";
 import {useSelector} from "react-redux";
 
 const WishList = () => {

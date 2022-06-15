@@ -4,14 +4,16 @@ import {useState} from "react";
 
 const Input = ({
     label,
+    innerHtml,
     value,
+    disable,
+    checkHandler,
     type,
     errors,
     placeholder,
-    disable,
     register,
     required,
-    width,
+    style,
     patternValue,
     patternErrorMessage,
     minLengthValue,
@@ -27,9 +29,10 @@ const Input = ({
 
     return (
         <div className={classes['input-container']}>
+
             <input
                 {...register(label, {
-                    required: required ? 'Field Required' : '',
+                    required: disable ? '' : required ? 'Field Required' : '',
                     pattern: {
                         value: patternValue ? patternValue : '',
                         message: patternValue ? patternErrorMessage : ''
@@ -39,8 +42,8 @@ const Input = ({
                         message: minLengthValue ? minLengthMessage : ''
                     }
                 })}
-                className={disable && `${classes.disabled}`}
-                style={{width: `${width}.%`}}
+                className={disable ? classes.disabled : ''}
+                style={style}
                 value={
                     label === 'email' ? tempState.email :
                     label === 'password' ? tempState.password :
@@ -52,11 +55,17 @@ const Input = ({
                     label === 'name' ? tempState.name : value
 
                 }
-
-                onChange={e => handleChange(e)}
+                disabled={disable}
+                onChange={e => {
+                    handleChange(e)
+                    if (checkHandler) {
+                        checkHandler(e)
+                    }
+                }}
                 type={type ? type : 'text'}
                 placeholder={placeholder ? placeholder : value}
             />
+            {type === 'checkbox' && <label>{innerHtml}</label>}
             {errors[`${label}`] && <span role='alert'>{errors[`${label}`].message}</span>}
         </div>
     );

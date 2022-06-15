@@ -1,12 +1,15 @@
 import classes from './ShoppingCart.module.scss';
-import Tr from "../cartITable/Tr";
+import Tr from "../cartComponents/Tr";
 import {useSelector} from "react-redux";
-import PriceFormatted from "../../../component/priceFormat/PriceFormatted";
+import PaymentDetails from "./PaymentDetails";
+import Button from '../../../component/button/Button';
+import {useForm} from "react-hook-form";
+
 
 const ShoppingCart = () => {
-    const totalQuantity = useSelector(state => state.cart.totalQuantity);
     const totalPrice = useSelector(state => state.cart.totalPrice);
     const cartItems = useSelector(store => store.cart.items);
+    const {handleSubmit, formState: {errors}} = useForm();
     return (
         <>
             <div className={classes['cart-table']}>
@@ -44,45 +47,19 @@ const ShoppingCart = () => {
                 <div className={`${classes['coupon-discount']}`}>
                     <h4 className={`text-uppercase`}>coupon discount</h4>
                     <p className="text-gray">Enter your coupon code if you have one!</p>
-                    <input type="text" placeholder="Enter your code here."/>
-                    <button className='btn-outline-success'>Apply Coupon</button>
+                    <input
+                        type="text"
+                        placeholder="Enter your code here."
+                    />
+                    <Button
+                        ccsClass='success'
+                        name={'Coupon'}
+                        justifyContent={'right'}
+                    />
                 </div>
-                <div className={classes['payment-details']}>
-                    <h4 className={`text-uppercase`}>Payment details</h4>
-                    <table className='table'>
-                        <tbody>
-                            <tr>
-                                <td className='text-left'>Cart Subtotal</td>
-                                <td className='text-end'>
-                                    <PriceFormatted
-                                        price={totalPrice}
-                                    />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className='text-left'>Taxes</td>
-                                <td className='text-end'>
-                                    <PriceFormatted
-                                        price={totalPrice * 0.07}
-                                    />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className='text-left'>Coupon Discount</td>
-                                <td className='text-end'>0%</td>
-                            </tr>
-                            <tr>
-                                <td className='text-left' style={{color: '#c87065'}}>Order Total</td>
-                                <td className='text-end' >
-                                    <PriceFormatted
-                                        price={(totalPrice * 0.07) + totalPrice}
-                                        color={'#c87065'}
-                                    />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <PaymentDetails
+                    totalPrice={totalPrice}
+                />
             </div>
         </>
     );
