@@ -3,6 +3,7 @@ export const calcDiscount = (price, discount) => {
 }
 
 export const phoneFormat = (value, previousValue) => {
+    debugger
     if (!value) return value;
     const currentValue = value.replace(/[^\d]/g, '');
     const cvLength = currentValue.length;

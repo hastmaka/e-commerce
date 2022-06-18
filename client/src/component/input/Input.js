@@ -3,35 +3,31 @@ import {phoneFormat} from "../../helper/Helper";
 import {useState} from "react";
 
 const Input = ({
-    label,
-    innerHtml,
-    value,
-    disable,
-    checkHandler,
-    type,
-    errors,
-    placeholder,
-    register,
-    required,
-    style,
-    patternValue,
-    patternErrorMessage,
-    minLengthValue,
-    minLengthMessage
-}) => {
+                   label,
+                   register,
+                   disable,
+                   required,
+                   innerHtml,
+                   value,
+                   checkHandler,
+                   type,
+                   errors,
+                   placeholder,
+                   style,
+                   patternValue,
+                   patternErrorMessage,
+                   minLengthValue,
+                   minLengthMessage
+               }) => {
     // debugger
     const [phone, setPhone] = useState('');
-    const [tempState, setTempState] = useState({});
-    const handleChange = (e) => {
-        setPhone(prevState => (phoneFormat(e.target.value, prevState.phone)));
-        setTempState(e.target.value);
-    };
 
     return (
         <div className={classes['input-container']}>
-
             <input
                 {...register(label, {
+                    value: label === 'phone' ? phone : value,
+                    disabled: disable,
                     required: disable ? '' : required ? 'Field Required' : '',
                     pattern: {
                         value: patternValue ? patternValue : '',
@@ -40,29 +36,20 @@ const Input = ({
                     minLength: {
                         value: minLengthValue ? minLengthValue : '',
                         message: minLengthValue ? minLengthMessage : ''
+                    },
+                    onChange: (e) => {
+                        if(e.target.name === 'phone') {
+                            debugger
+                            setPhone(prevState => (phoneFormat(e.target.value, prevState)))
+                        }
+                        if (checkHandler) {
+                            checkHandler(e)
+                        }
                     }
                 })}
                 className={disable ? classes.disabled : ''}
-                style={style}
-                value={
-                    label === 'email' ? tempState.email :
-                    label === 'password' ? tempState.password :
-                    label === 'confirmPassword' ? tempState.confirmPassword :
-                    label === 'firstName' ? tempState.firstName :
-                    label === 'lastName' ? tempState.lastName :
-                    label === 'phone' ? phone :
-                    label === 'address' ? tempState.address :
-                    label === 'name' ? tempState.name : value
-
-                }
-                disabled={disable}
-                onChange={e => {
-                    handleChange(e)
-                    if (checkHandler) {
-                        checkHandler(e)
-                    }
-                }}
                 type={type ? type : 'text'}
+                style={style}
                 placeholder={placeholder ? placeholder : value}
             />
             {type === 'checkbox' && <label>{innerHtml}</label>}
@@ -75,7 +62,6 @@ export default Input;
 
 /* how to use it */
 /*
-
 key={item.name}
 errors={errors} - passing the error parameter from useForm
 register={register} - register from useForm
@@ -90,5 +76,4 @@ patternValue={item.patternValue} - pattern the field has to fulfill
 patternErrorMessage={item.patternErrorMessage} - in case of pattern error this is the message to show
 minLengthValue={item.minLengthValue} - min length value
 minLengthMessage={item.minLengthMessage} - min length value message
-
 */

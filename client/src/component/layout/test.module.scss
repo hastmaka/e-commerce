@@ -1,33 +1,10 @@
-//@use 'src/scss/index';
-//
-//.container {
-//    position: relative;
-//    z-index: 1;
-//    @include index.displayFlex(row, center, center);
-//    flex-wrap: wrap;
-//    padding: 1em;
-//    background: #dadada;
-//}
-//
-//.input-container {
-//    @include index.displayFlex(row, null, null);
-//    position: relative;
-//    margin: 26px 0;
-//
-//    input {
-//        &::placeholder {
-//            color: var(--placeholderColor);
-//        }
-//        &:focus::placeholder {
-//            color: #f1f1f1;
-//        }
-//    }
-//
-//    span{
-//        position: absolute;
-//        top: 44px;
-//        color: red;
-//        font-size: 10px;
-//        margin: 0 0 0 10px;
-//    }
-//}
+@use '../../../../../test/src/index';
+.form-general-container{
+    @include index.displayFlex(column,center,center);
+    form{
+        @include index.displayFlex(column,center,center);
+        *{
+            width: 100%;
+        }
+    }
+}

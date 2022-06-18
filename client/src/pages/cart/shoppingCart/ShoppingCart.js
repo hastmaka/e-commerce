@@ -3,13 +3,10 @@ import Tr from "../cartComponents/Tr";
 import {useSelector} from "react-redux";
 import PaymentDetails from "./PaymentDetails";
 import Button from '../../../component/button/Button';
-import {useForm} from "react-hook-form";
-
 
 const ShoppingCart = () => {
     const totalPrice = useSelector(state => state.cart.totalPrice);
     const cartItems = useSelector(store => store.cart.items);
-    const {handleSubmit, formState: {errors}} = useForm();
     return (
         <>
             <div className={classes['cart-table']}>

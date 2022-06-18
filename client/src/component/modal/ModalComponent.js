@@ -38,7 +38,7 @@ const ModalComponent = ({show, title, onHide}) => {
                             register={register}
                             required={true}
                             disable={item.disabled}
-                            width={100}
+                            style={{'width': '100%'}}
                             placeholder={item.placeholder}
                             value={item.value}
                             label={item.name}

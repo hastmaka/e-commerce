@@ -1,4 +1,4 @@
-@use 'src/scss/index';
+@use '../../../../../../test/src/index';
 
 .cart-table {
     padding: 40px;
@@ -37,7 +37,7 @@
 .coupon-discount-payment-details-container {
     @include index.displayFlex(row, null, null);
     gap: 20px;
-    margin-top: 30px;
+    margin-top: 20px;
 
 
     .coupon-discount, .payment-details {

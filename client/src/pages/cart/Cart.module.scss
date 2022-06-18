@@ -1,4 +1,4 @@
-@use 'src/scss/index';
+@use '../../../../../test/src/index';
 
 .cart-container {
     @include index.displayFlex(null, center, null);

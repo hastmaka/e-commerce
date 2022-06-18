@@ -8,27 +8,28 @@ import Button from "../../component/button/Button";
 import Input from "../../component/input/Input";
 
 const items = [{
+    type: 'text',
     name: 'email',
     placeholder: 'Email',
     patternValue: /\S+@\S+\.\S+/,
     message: 'Entered value does not match email format.'
 }, {
+    type: 'password',
     name: 'password',
     placeholder: 'Password',
-    type: 'password',
     minLengthValue: 6,
     minLengthMessage: 'Min length is 6'
 }, {
+    type: 'password',
     name: 'confirmPassword',
     placeholder: 'Confirm Password',
-    type: 'password',
     minLengthValue: 6,
     minLengthMessage: 'Min length is 6'
 },
-    {name: 'firstName', placeholder: 'First Name'},
-    {name: 'lastName', placeholder: 'Last Name'},
-    {name: 'address', placeholder: 'Address'},
-    {name: 'phone', placeholder: 'Phone'}
+    {type: 'text', name: 'firstName', placeholder: 'First Name'},
+    {type: 'text', name: 'lastName', placeholder: 'Last Name'},
+    {type: 'text', name: 'address', placeholder: 'Address'},
+    {type: 'text', name: 'phone', placeholder: 'Phone'}
 ]
 
 const CreateAccount = () => {

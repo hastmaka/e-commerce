@@ -1,35 +1,31 @@
-import {useForm} from "react-hook-form";
+
+import Input from '../../component/input/Input';
+import classes from './test.module.scss';
+import Form from "../form/Form";
 
 const Test = () => {
-    const {reset, watch, register, handleSubmit, formState: {errors}} = useForm();
-    const onSubmit = (data) => {
-        debugger
+
+    const onSubmit = (data) => console.log(data);
+
+    let def = {
+        email: ''
     }
-    const selectAll = watch('selectAll');
+
     return (
-        <div>
-            <form onSubmit={handleSubmit(onSubmit)} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                <label htmlFor="">
-                    <input {...register('selectAll')} type='checkbox'/>
-                    selectAll
-                </label>
-                <label htmlFor="">
-                    <input
-                        type='checkbox'
-                        value='all'
-                        checked={selectAll}
-                        {...register('one', {
-                            required: {
-                                value: true,
-                                message: 'This field is required'
-                            }
-                        })}
-                    />
-                    {errors.one && <span>This field is required</span>}
-                </label>
-                <input {...register('two')} type='text' disabled={true}/>
-                <button type='submit'>click</button>
-            </form>
+        <div className={classes['form-general-container']}>
+            <h1>useController</h1>
+            <Form defaultValues={def} onSubmit={onSubmit}>
+                <Input
+                    type='text'
+                    name='email'
+                    required={true}
+                    patternValue={/\S+@\S+\.\S+/}
+                    message='Entered value does not match email format.'
+                />
+                {/*<Select name='sex' options={['Female', 'Male', 'Non']}/>*/}
+
+                {/*<button>Submit</button>*/}
+            </Form>
         </div>
     );
 }

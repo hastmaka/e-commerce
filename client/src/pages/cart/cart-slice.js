@@ -20,7 +20,6 @@ const cartSlice = createSlice({
                     })
                     tempData.total += product.product_price * cart_product_quantity;
                     tempData.quantity += cart_product_quantity;
-
                     return tempData;
                 },{
                     /* tempData */
