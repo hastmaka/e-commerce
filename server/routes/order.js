@@ -14,7 +14,7 @@ module.exports = {
             });
         }
         //findByPk - find by primary key
-        models.cart.findByPk(req.params.id, {
+        models.order.findByPk(req.params.id, {
             include: [
                 {model: models.product},
                 {model: models.size},
@@ -65,7 +65,7 @@ module.exports = {
             user_user_id
         } = req.body;
 
-        models.cart.findOne({
+        models.order.findOne({
             where: {
                 product_product_id: {
                     [Op.eq]: product_product_id
@@ -82,7 +82,7 @@ module.exports = {
             }
         }).then(result => {
             if (!result) {
-                models.cart.create(req.body)
+                models.order.create(req.body)
                     .then(() => {
                         crud.findCartByUser(user_user_id)
                             .then(results => {
@@ -97,7 +97,7 @@ module.exports = {
                     });
             } else {
                 let req_cart_product_quantity = result.dataValues.cart_product_quantity;
-                models.cart.update(
+                models.order.update(
                     {cart_product_quantity: cart_product_quantity + req_cart_product_quantity},
                     {
                         where: {

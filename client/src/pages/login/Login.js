@@ -37,7 +37,6 @@ const Login = () => {
     });
 
     const onSubmit = ({email, password}) => {
-        debugger
         const authentication = getAuth();
         dispatch(loginSliceActions.isLoadingToggle());
         signInWithEmailAndPassword(authentication, email, password).then(res => {

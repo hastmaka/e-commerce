@@ -19,7 +19,7 @@ module.exports = (sequelize, dataTypes) => {
   });
 
   Model.associate = (models) => {
-    Model.hasOne(models.cart, { foreignKey: 'user_user_id', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
+    Model.hasOne(models.order, { foreignKey: 'user_user_id', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
     Model.hasOne(models.review, { foreignKey: 'user_user_id', onDelete: 'NO ACTION', onUpdate: 'NO ACTION' });
 
     // Model.hasMany(models.product_size_map, {foreignKey: 'size_size_id', onDelete: 'NO ACTION', onUpdate: 'NO ACTION'});

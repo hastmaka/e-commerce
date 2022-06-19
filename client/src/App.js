@@ -102,7 +102,7 @@ const App = () => {
 
                 {userIsLoggedIn &&
                     <Route path='/profile' element={<Profile/>}>
-                        <Route element={<ProfileGeneral/>}/>
+                        <Route index element={<ProfileGeneral/>}/>
                         <Route path='general' element={<ProfileGeneral/>}/>
                         <Route path='yourOrder' element={<ProfileYourOrder/>}/>
                         <Route path='loginAndSecurity' element={<ProfileLoginAndSecurity/>}/>

@@ -4,16 +4,19 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState: {
         items: [],
+        wishList: [],
         productQuantity: [],
         totalQuantity: 0,
         totalPrice: 0,
     },
     reducers: {
         showItemsInCart(state, action) {
+            // debugger
             let { total, quantity, productQuantity } = action.payload.data.reduce(
                 (tempData, currentItem) => {
                     const { product, cart_product_quantity } = currentItem;
                     tempData.productQuantity.push({
+                        id: product.product_id,
                         title: product.product_name,
                         price: product.product_price,
                         quantity: cart_product_quantity
@@ -31,8 +34,10 @@ const cartSlice = createSlice({
             state.totalQuantity = quantity;
             state.totalPrice = total;
             state.items = action.payload.data;
+            //"[1] Cart [2] WishList [3] Completed Orders"
+            state.wishList = action.payload.data.filter(item => item.order_type === 2);
             state.productQuantity = productQuantity.reduce((acc, curr) => {
-                let findIndex = acc.findIndex(item => item.title === curr.title);
+                let findIndex = acc.findIndex(item => item.id === curr.id);
 
                 if (findIndex === -1) {
                     acc.push(curr)

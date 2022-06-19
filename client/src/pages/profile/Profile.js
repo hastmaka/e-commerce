@@ -5,11 +5,11 @@ import LiProfile from "./LiProfile";
 const profileLinks = [
     {to: 'general', name: 'General'},
     {to: 'yourOrder', name: 'Your Orders'},
-    // {to: 'loginAndSecurity', name: 'Login and Security'},
-    // {to: 'yourPayments', name: 'Your Payments'},
-    // {to: 'yourMessages', name: 'Your Messages'},
-    // {to: 'archivedOrders', name: 'Archived Orders'},
-    // {to: 'wishList', name: 'Wish List'}
+    {to: 'loginAndSecurity', name: 'Login and Security'},
+    {to: 'yourPayments', name: 'Your Payments'},
+    {to: 'yourMessages', name: 'Your Messages'},
+    {to: 'archivedOrders', name: 'Archived Orders'},
+    {to: 'wishList', name: 'Wish List'}
 ]
 
 const Profile = () => {

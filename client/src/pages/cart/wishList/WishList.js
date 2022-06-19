@@ -3,7 +3,7 @@ import Tr from "../cartComponents/Tr";
 import {useSelector} from "react-redux";
 
 const WishList = () => {
-    const cartItems = useSelector(store => store.cart.items);
+    const wishList = useSelector(store => store.cart.wishList);
     // debugger
     return (
         <>
@@ -19,7 +19,7 @@ const WishList = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    {cartItems?.map(item =>
+                    {wishList?.map(item =>
                         <Tr
                             key={item.cart_id}
                             imageUrl={item.image.image_url}
@@ -32,7 +32,7 @@ const WishList = () => {
                             title={item.product.product_name}
                             actions={['delete']}
                             typeOfTable={'wishList'}
-                            cartItems={cartItems}
+                            cartItems={wishList}
                         />
                     )}
                     </tbody>

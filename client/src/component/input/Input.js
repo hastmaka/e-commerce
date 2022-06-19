@@ -39,7 +39,7 @@ const Input = ({
                     },
                     onChange: (e) => {
                         if(e.target.name === 'phone') {
-                            debugger
+                            // debugger
                             setPhone(prevState => (phoneFormat(e.target.value, prevState)))
                         }
                         if (checkHandler) {

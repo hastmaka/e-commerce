@@ -2,7 +2,7 @@ const models = require("../models");
 const {Op} = require("sequelize");
 const findCartByUser = (user_id) => {
     return new Promise(function (resolve, reject) {
-        models.cart.findAll({
+        models.order.findAll({
             where: {
                 user_user_id: {
                     [Op.eq]: user_id

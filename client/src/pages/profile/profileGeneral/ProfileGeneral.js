@@ -40,12 +40,12 @@ const ProfileGeneral = () => {
                 title='Profile Information'
                 onHide={() => setShowModal(false)}
             />
-            <div className={classes['btn-container']}>
-                <Button
-                    name='Edit'
-                    handler={() => handleTempData()}
-                />
-            </div>
+            {/*<div className={classes['btn-container']}>*/}
+            {/*    <Button*/}
+            {/*        name='Edit'*/}
+            {/*        handler={() => handleTempData()}*/}
+            {/*    />*/}
+            {/*</div>*/}
             {items.map(item =>
                 <div key={item.name} className={classes['profile-general-list']}>
                     <span>{item.name}: {item.value}</span>

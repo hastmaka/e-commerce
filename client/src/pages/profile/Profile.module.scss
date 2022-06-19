@@ -1,21 +1,19 @@
-.user-profile-bg {
-    display: flex;
-    justify-content: center;
-    /*align-items: center;*/
+@use 'src/scss/index';
 
+.user-profile-bg {
+    @include index.displayFlex(null, center, null);
     width: 100%;
-    /*height: 100vh;*/
     background: var(--baseBgColor);
+    /*height: 100vh;*/
 
     .user-profile-content {
-        display: flex;
-        flex-direction: column;
+        @include index.displayFlex(column, null, null);
         /*align-items: center;*/
 
         border: 1px solid var(--border);
         background: var(--bgColor);
         box-shadow: 5px 5px 10px -10px rgba(101, 98, 98, 0.56);
-        border-radius: 5px;
+        //border-radius: 5px;
         padding: 10px 20px;
         margin: 10px 20px;
         max-width: var(--max-width);
@@ -30,42 +28,33 @@
         }
 
         .user-profile-content-fix {
-            display: flex;
-            flex-direction: row;
+            @include index.displayFlex(row, null, null);
 
             .user-profile-left {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
+                @include index.displayFlex(column, flex-start, null);
                 width: 250px;
                 /*gap: 15px;*/
                 padding: 0;
                 border-radius: 5px;
                 list-style-type: none;
 
-                :first-child {
-                    border-top-left-radius: 5px;
-                    border-top-right-radius: 5px;
-                }
-
-                :last-child {
-                    border-bottom-left-radius: 5px;
-                    border-bottom-right-radius: 5px;
-                }
-
                 li {
+                    position: relative;
+                    z-index: 15;
                     width: 100%;
-                    background: rgba(31, 32, 33, 0.92);
-                    padding: 10px;
+                    background: #fff;
                     cursor: pointer;
                     border: 1px solid var(--border);
                     transition: .5s;
 
                     a {
+                        position: relative;
+                        z-index: 16;
                         display: block;
+                        padding: 10px;
                         text-decoration: none;
                         font-size: 14px;
-                        color: #ECB72DFF;
+                        color: #2f2f2f;
                         transition: .5s;
                     }
 
@@ -74,10 +63,10 @@
                     }
 
                     &:hover {
-                        background: rgba(31, 32, 33, 0.89);
+                        background: rgba(31, 32, 33, 0.35);
 
                         a {
-                            color: #ECB72DFF;
+                            color: #eaeaea;
                             padding-left: 10px;
                         }
                     }
@@ -94,9 +83,7 @@
             }
 
             .user-profile-cards div {
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                @include index.displayFlex(null, center, center);
                 border: 1px solid var(--border);
                 border-radius: 5px;
                 padding: 20px;

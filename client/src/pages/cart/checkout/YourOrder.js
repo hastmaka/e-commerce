@@ -6,13 +6,12 @@ import YourOrderExtraTr from "./YourOrderExtraTr";
 const YourOrder = () => {
     const totalPrice = useSelector(store => store.cart.totalPrice);
     const productQuantity = useSelector(store => store.cart.productQuantity);
-
+    debugger
     let yourOrderExtraTr = [
         {title: 'Tax', price: (totalPrice*0.07), color: '#999'},
         {title: 'Cart Subtotal', price: (totalPrice * 0.07) + totalPrice, color: '#999'},
         {title: 'Shipping and Handling', price: 15, color: '#999'},
-        {title: 'Order Total', price: (totalPrice * 0.07) + totalPrice + 15, color: '#c87065'},
-
+        {title: 'Order Total', price: (totalPrice * 0.07) + totalPrice + 15, color: '#c87065'}
     ]
     return (
         <div className={classes['your-order']}>
@@ -27,7 +26,7 @@ const YourOrder = () => {
                 <tbody>
                     {productQuantity.map(item =>
                         <Tr
-                            key={item.title}
+                            key={item.id}
                             typeOfTable='checkout'
                             price={item.price}
                             quantity={item.quantity}

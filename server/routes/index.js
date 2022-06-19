@@ -2,7 +2,7 @@ const router = require("express").Router();
 
 const Link = require('./link');
 const Product = require('./product');
-const Cart = require('./cart');
+const Order = require('./order');
 const User = require('./users');
 const Review = require('./review');
 
@@ -23,9 +23,9 @@ router.post('/api/create-review', Review.create);
 router.get('/api/reviews/:productId', Review.getReviewsByProductId);
 router.get('/review-rating-avg', Review.getAvg);
 /* cart */
-router.get('/api/cart/:id', Cart.cartId);
-router.get('/api/cart/all/:user_user_id', Cart.cartAll);
-router.post('/api/cart', Cart.create);
+router.get('/api/cart/:id', Order.cartId);
+router.get('/api/cart/all/:user_user_id', Order.cartAll);
+router.post('/api/cart', Order.create);
 /* auth */
 router.post('/api/auth/login', User.auth);//api/auth/*
 router.post('/api/create', User.create);

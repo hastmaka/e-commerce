@@ -23,7 +23,7 @@ const ShoppingCart = () => {
                     <tbody>
                     {cartItems?.map(item =>
                         <Tr
-                            key={item.cart_id}
+                            key={item.order_id}
                             imageUrl={item.image.image_url}
                             title={item.product.product_name}
                             size={item.size.size_name}
