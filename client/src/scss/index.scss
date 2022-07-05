@@ -4,3 +4,21 @@
     justify-content: $justify;
     align-items: $align;
 }
+
+@mixin h4() {
+    position: relative;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 28px;
+    color: #9a9999;
+
+    &::before {
+        background: #eee none repeat scroll 0 0;
+        bottom: 0;
+        content: "";
+        height: 2px;
+        left: 0;
+        position: absolute;
+        width: 50px;
+    }
+}

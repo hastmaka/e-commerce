@@ -14,7 +14,7 @@ const Cart = () => {
         <div className={classes['cart-container']}>
             <div className={classes['cart-container-fix']}>
                 <div className={classes['cart-header']}>
-                    <h1>Shopping Cart</h1>
+                    <h4 className='text-uppercase'>Shopping Cart</h4>
                 </div>
 
                 <ul>

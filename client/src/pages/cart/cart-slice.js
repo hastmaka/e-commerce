@@ -57,7 +57,60 @@ const cartSlice = createSlice({
             }
         },
 
-        deleteItemsToCart(state, action) {
+        deleteItemFromCart(state, action) {
+            const existingCartItemIndex = state.items.findIndex(item => item.order_id === action.payload);
+            const existingItem = state.items[existingCartItemIndex];
+            const updatedTotalQuantity = state.totalQuantity - existingItem.cart_product_quantity;
+            const updatedTotalPrice = state.totalPrice - existingItem.product.product_price * existingItem.cart_product_quantity;
+            return {
+                ...state,
+                items: state.items.filter(item => item.order_id !== action.payload),
+                totalPrice: updatedTotalPrice,
+                totalQuantity: updatedTotalQuantity
+            }
+        },
+
+        subItem(state, action){
+            const existingCartItemIndex = state.items.findIndex(item => item.order_id === action.payload);
+            const existingItem = state.items[existingCartItemIndex];
+            const updatedTotalQuantity = state.totalQuantity - 1;
+            const updatedTotalPrice = state.totalPrice - existingItem.product.product_price;
+            let updatedItems;
+            if (existingItem.cart_product_quantity === 1) {
+                updatedItems = state.items.filter(item => item.order_id !== action.payload);
+            } else {
+                const updatedItem = {...existingItem, cart_product_quantity: existingItem.cart_product_quantity - 1}
+                updatedItems = [...state.items];
+                updatedItems[existingCartItemIndex] = updatedItem;
+            }
+            return {
+                ...state,
+                items: updatedItems,
+                totalPrice: updatedTotalPrice,
+                totalQuantity: updatedTotalQuantity
+            }
+        },
+
+        addItem(state, action){
+            const existingCartItemIndex = state.items.findIndex(item => item.order_id === action.payload);
+            const existingItem = state.items[existingCartItemIndex];
+            const updatedTotalQuantity = state.totalQuantity + 1;
+            const updatedTotalPrice = state.totalPrice + existingItem.product.product_price;
+            let updatedItems;
+            if (existingItem) {
+                const updatedItem = {
+                    ...existingItem,
+                    cart_product_quantity: existingItem.cart_product_quantity + 1
+                }
+                updatedItems = [...state.items];
+                updatedItems[existingCartItemIndex] = updatedItem;
+            }
+            return {
+                ...state,
+                items: updatedItems,
+                totalPrice: updatedTotalPrice,
+                totalQuantity: updatedTotalQuantity
+            }
         },
 
         emptyCart(state) {

@@ -35,7 +35,7 @@ const ProductImage = ({discount_tag, img, product_id}) => {
                 src={require(`../../../../../images/${img}`)}
                 alt=""
             />
-            <div className={classes['product-btn-container']}>
+            <div className={classes['product-actions-container']}>
                 {btnText.map(btn =>
                     <CardBtn
                         key={btn.id}

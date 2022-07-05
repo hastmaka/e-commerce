@@ -2,23 +2,7 @@ import classes from './Input.module.scss';
 import {phoneFormat} from "../../helper/Helper";
 import {useState} from "react";
 
-const Input = ({
-                   label,
-                   register,
-                   disable,
-                   required,
-                   innerHtml,
-                   value,
-                   checkHandler,
-                   type,
-                   errors,
-                   placeholder,
-                   style,
-                   patternValue,
-                   patternErrorMessage,
-                   minLengthValue,
-                   minLengthMessage
-               }) => {
+const Input = ({ label, register, type, errors, required, value, ...rest}) => {
     // debugger
     const [phone, setPhone] = useState('');
 
@@ -27,32 +11,35 @@ const Input = ({
             <input
                 {...register(label, {
                     value: label === 'phone' ? phone : value,
-                    disabled: disable,
-                    required: disable ? '' : required ? 'Field Required' : '',
+                    disabled: rest.disable,
+                    required: rest.disable ? '' : required ? 'Field Required' : '',
                     pattern: {
-                        value: patternValue ? patternValue : '',
-                        message: patternValue ? patternErrorMessage : ''
+                        value: rest.patternValue ? rest.patternValue : '',
+                        message: rest.patternValue ? rest.patternErrorMessage : ''
                     },
                     minLength: {
-                        value: minLengthValue ? minLengthValue : '',
-                        message: minLengthValue ? minLengthMessage : ''
+                        value: rest.minLengthValue ? rest.minLengthValue : '',
+                        message: rest.minLengthValue ? rest.minLengthMessage : ''
                     },
+                    // validate: {
+                    //     equal: rest.validateEqualTo ? (v => v.length === 0 || 'hello') : ''
+                    // },
                     onChange: (e) => {
                         if(e.target.name === 'phone') {
                             // debugger
                             setPhone(prevState => (phoneFormat(e.target.value, prevState)))
                         }
-                        if (checkHandler) {
-                            checkHandler(e)
+                        if (rest.checkHandler) {
+                            rest.checkHandler(e)
                         }
                     }
                 })}
-                className={disable ? classes.disabled : ''}
+                className={rest.disable ? classes.disabled : ''}
                 type={type ? type : 'text'}
-                style={style}
-                placeholder={placeholder ? placeholder : value}
+                style={rest.style}
+                placeholder={rest.placeholder ? rest.placeholder : value}
             />
-            {type === 'checkbox' && <label>{innerHtml}</label>}
+            {(type !== 'undefined' && type === 'checkbox') && <label>{rest.innerHtml}</label>}
             {errors[`${label}`] && <span role='alert'>{errors[`${label}`].message}</span>}
         </div>
     );

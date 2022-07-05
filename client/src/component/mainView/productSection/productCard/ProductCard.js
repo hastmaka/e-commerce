@@ -21,6 +21,7 @@ const ProductCard = ({items}) => {
                 prod_info_brand={product_name}
                 prod_info_description={product_description}
                 prod_info_actual_price={product_price}
+                product_id={product_id}
             />
         </div>
     )

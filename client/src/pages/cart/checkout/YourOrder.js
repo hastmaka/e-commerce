@@ -6,7 +6,7 @@ import YourOrderExtraTr from "./YourOrderExtraTr";
 const YourOrder = () => {
     const totalPrice = useSelector(store => store.cart.totalPrice);
     const productQuantity = useSelector(store => store.cart.productQuantity);
-    debugger
+    // debugger
     let yourOrderExtraTr = [
         {title: 'Tax', price: (totalPrice*0.07), color: '#999'},
         {title: 'Cart Subtotal', price: (totalPrice * 0.07) + totalPrice, color: '#999'},

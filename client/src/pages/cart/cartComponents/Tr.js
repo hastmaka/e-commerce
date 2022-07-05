@@ -4,16 +4,38 @@ import PriceFormatted from "../../../component/priceFormat/PriceFormatted";
 /* icons */
 import {RiDeleteBin3Line, RiHeart2Fill} from 'react-icons/ri';
 import {MdAddShoppingCart} from 'react-icons/md';
+import {useDispatch} from "react-redux";
+import {fetchData} from "../../../helper/Api";
+import {cartSliceActions} from "../cart-slice";
 
-const Tr = ({imageUrl, title, size, color, price, quantity, discount, actions, typeOfTable}) => {
+const Tr = ({imageUrl, title, size, color, price, quantity, discount, actions, typeOfTable, orderId}) => {
+    const dispatch = useDispatch();
     // debugger
     let [quantityInput, setQuantityInput ] = useState(quantity);
 
-    const handleSub = () => {
+    const handleSub = (orderId) => {
         setQuantityInput(prevState => prevState - 1)
+        dispatch(cartSliceActions.subItem(orderId));
     }
     const handleAdd = () => {
         setQuantityInput(prevState => prevState + 1)
+        dispatch(cartSliceActions.addItem(orderId));
+    }
+    const handleDelete = (orderId) => {
+        if(window.confirm('Are you want to delete this item from the cart') === true) {
+            // debugger
+            dispatch(cartSliceActions.deleteItemFromCart(orderId));
+            // fetch(`http://localhost:5002/api/order/${orderId}`, {method: 'DELETE'}).then(res => {
+            //     // debugger
+            //     if(res.ok) {
+            //         // debugger
+            //     } else {
+            //         debugger
+            //     }
+            // });
+
+        }
+
     }
 
     const handleQuantityChange = () => {
@@ -46,7 +68,7 @@ const Tr = ({imageUrl, title, size, color, price, quantity, discount, actions, t
                 <div className={classes['add-sub-container']}>
                     <div
                         className={classes.sub}
-                        onClick={handleSub}
+                        onClick={() => handleSub(orderId)}
                     >-
                     </div>
                     <input
@@ -65,7 +87,12 @@ const Tr = ({imageUrl, title, size, color, price, quantity, discount, actions, t
             {/* stock status*/}
             {typeOfTable === 'wishList' && <td>
                 <div style={{textAlign: 'center'}}>
-                    <span>1</span>
+                    {quantity > 1 ?
+                        <span className='text-uppercase' style={{color: '#449658', fontWeight: 'bold'}}>in stock</span>
+                        :
+                        <span className='text-uppercase' style={{color: '#b93737', fontWeight: 'bold'}}>out of stock</span>
+                    }
+
                 </div>
             </td>}
             {/*total*/}
@@ -100,7 +127,11 @@ const Tr = ({imageUrl, title, size, color, price, quantity, discount, actions, t
             {actions && <td style={{textAlign: 'center'}}>
                 <div className={classes['cart-product-options']}>
                     {actions[0] === 'delete' &&
-                        <RiDeleteBin3Line className={classes['delete-icon']}/>}
+                        <RiDeleteBin3Line
+                            onClick={() => handleDelete(orderId)}
+                            className={classes['delete-icon']}
+                        />
+                    }
                     {actions[1] === 'wishList' &&
                         <>
                             <div className={classes.separator}/>

@@ -1,6 +1,6 @@
 FIX
 ________________________________________________________
-login form submit with enter key
+when add the same product different color doesnt work as expected
 checkout Field Required has problem
          Disable field required when checkbox is checked DONE
 
@@ -14,7 +14,6 @@ reload page in any place items stay in cart DONE
 Implement
 ________________________________________________________
 Cart
-delete update save_for_later
 checkout
 quantity DONE
 

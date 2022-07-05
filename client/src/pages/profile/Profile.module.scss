@@ -1,96 +1,88 @@
 @use 'src/scss/index';
 
 .user-profile-bg {
-    @include index.displayFlex(null, center, null);
+    @include index.displayFlex(column, center, null);
     width: 100%;
     background: var(--baseBgColor);
-    /*height: 100vh;*/
+
+    .user-profile-title {
+        @include index.displayFlex(row, center, center);
+        background: var(--bgColor);
+        padding: 10px 10px;
+        margin: 10px 10px 0 10px;
+        height: 80px;
+        h4 {
+            @include index.h4
+        }
+    }
 
     .user-profile-content {
-        @include index.displayFlex(column, null, null);
-        /*align-items: center;*/
-
-        border: 1px solid var(--border);
-        background: var(--bgColor);
-        box-shadow: 5px 5px 10px -10px rgba(101, 98, 98, 0.56);
-        //border-radius: 5px;
-        padding: 10px 20px;
-        margin: 10px 20px;
+        @include index.displayFlex(row, null, null);
+        background: var(--baseBgColor);
+        padding: 10px 10px;
         max-width: var(--max-width);
-        width: 100%;
-        gap: 20px;
+        gap: 10px;
 
-        .user-profile-title {
-            text-align: center;
-            margin: 20px;
-            font-size: 16px;
-            font-weight: bold;
-        }
+        .user-profile-left {
+            @include index.displayFlex(column, flex-start, null);
+            width: 250px;
+            margin-bottom: 0;
+            padding: 0;
+            list-style-type: none;
 
-        .user-profile-content-fix {
-            @include index.displayFlex(row, null, null);
+            li {
+                position: relative;
+                z-index: 15;
+                width: 100%;
+                background: #fff;
+                cursor: pointer;
+                border: 1px solid var(--border);
+                transition: .5s;
 
-            .user-profile-left {
-                @include index.displayFlex(column, flex-start, null);
-                width: 250px;
-                /*gap: 15px;*/
-                padding: 0;
-                border-radius: 5px;
-                list-style-type: none;
-
-                li {
+                a {
                     position: relative;
-                    z-index: 15;
-                    width: 100%;
-                    background: #fff;
-                    cursor: pointer;
-                    border: 1px solid var(--border);
+                    z-index: 16;
+                    display: block;
+                    padding: 10px;
+                    text-decoration: none;
+                    font-size: 14px;
+                    color: #2f2f2f;
                     transition: .5s;
+                }
+
+                .active {
+                    color: var(--swatch_6);
+                }
+
+                &:hover {
+                    background: var(--swatch_10);
 
                     a {
-                        position: relative;
-                        z-index: 16;
-                        display: block;
-                        padding: 10px;
-                        text-decoration: none;
-                        font-size: 14px;
-                        color: #2f2f2f;
-                        transition: .5s;
-                    }
-
-                    .active {
-                        color: var(--swatch_6);
-                    }
-
-                    &:hover {
-                        background: rgba(31, 32, 33, 0.35);
-
-                        a {
-                            color: #eaeaea;
-                            padding-left: 10px;
-                        }
+                        color: #eaeaea;
+                        padding-left: 10px;
                     }
                 }
             }
-
-            .user-profile-right {
-                padding: 15px;
-                width: 100%;
-            }
-
-            .user-profile-right div + div {
-                margin-top: 8px;
-            }
-
-            .user-profile-cards div {
-                @include index.displayFlex(null, center, center);
-                border: 1px solid var(--border);
-                border-radius: 5px;
-                padding: 20px;
-                /*height: 200px;*/
-                width: 250px;
-            }
         }
+
+        .user-profile-right {
+            padding: 15px;
+            width: 100%;
+            background: var(--bgColor);
+        }
+
+        .user-profile-right div + div {
+            margin-top: 8px;
+        }
+
+        .user-profile-cards div {
+            @include index.displayFlex(null, center, center);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 20px;
+            width: 250px;
+        }
+
     }
 }
 

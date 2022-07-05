@@ -7,7 +7,7 @@ import {cartSliceActions} from "../../cart/cart-slice";
 
 import SizeSection from "./sizesSection/SizeSection";
 import ColorSection from "./colorsSection/ColorSection";
-import RatingComponent from "../productDescription/review/RatingComponent";
+import RatingComponent from "../../../component/rating/RatingComponent";
 import {useEffect} from "react";
 import PriceFormatted from "../../../component/priceFormat/PriceFormatted";
 // import {cartSliceActions} from "../../cart/cart-slice";
@@ -22,12 +22,14 @@ const DetailsSection = ({product_name, product_price, product_discount,
     const totalReviews = useSelector(store => store.detailProduct.reviews);
     const priceAfterApplyDiscount = calcDiscount(product_price, product_discount);
 
+    debugger
+
     useEffect(() => {
-        dispatch(fetchData('review-rating-avg', detailProductSliceActions.setRatingAvg))
+        dispatch(fetchData(`review-rating-avg/${product.product_id}`, detailProductSliceActions.setRatingAvg))
     }, [totalReviews])
 
     const addItemToServerCartHandler = (product) => {
-        dispatch(fetchData('api/cart', cartSliceActions.cartQuantity, 'POST', {
+        dispatch(fetchData('api/order', cartSliceActions.cartQuantity, 'POST', {
             product_product_id: product.product_id,
             size_size_id: product.selected_size_id,
             color_color_id: product.selected_color_id,

@@ -79,6 +79,7 @@ const detailProductSlice = createSlice({
         },
 
         setRatingAvg(state, action) {
+            debugger
             state.ratingAvg = action.payload.data.average
         },
 

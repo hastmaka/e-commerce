@@ -14,7 +14,7 @@ const MainView = () => {
                 <CarouselComponent/>
 
                 {/*hero-section*/}
-                <HeroSection/>
+                {/*<HeroSection/>*/}
 
                 {/*product-section*/}
                 <ProductSection

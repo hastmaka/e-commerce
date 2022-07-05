@@ -1,4 +1,4 @@
-@use '../../../../../../test/src/index';
+@use 'src/scss/index';
 
 .product-description-container {
     @include index.displayFlex(row, flex-start, center);

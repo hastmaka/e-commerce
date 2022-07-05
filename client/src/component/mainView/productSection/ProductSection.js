@@ -15,28 +15,22 @@ const ProductSection = ({section_title}) => {
         setSlideLeft(containerSlider.current.scrollLeft);
 
     }
-
     //have to place the product here
 
     return (
         <div className={classes['product-general-container-fashion']}>
             <div className={classes['product-general-container']}>
-                <h2 className={classes['product-category']}>{section_title}</h2>
+                <h2 className={classes['product-section-title']}>{section_title}</h2>
                 <button
                     className={classes['pre-btn']}
                     onClick={() => sliderHandler(-1)}>
-                    <img
-                        src={require('../../../images/arrow.png')}
-                        alt=""
-                    />
+                    p <br/>r <br/>e <br/>v
                 </button>
 
                 <button
                     className={classes['nxt-btn']}
                     onClick={() => sliderHandler(1)}>
-                    <img
-                        src={require('../../../images/arrow.png')}
-                        alt=""/>
+                    n <br/>e <br/> x <br/>t
                 </button>
                 {/*product-container*/}
                 <div className={classes['product-container']} ref={containerSlider}>

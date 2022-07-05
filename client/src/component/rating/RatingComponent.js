@@ -2,7 +2,7 @@ import {Rating} from 'react-simple-star-rating';
 import {memo} from "react";
 import classes from './RatingComponent.module.css';
 
-const RatingComponent = ({rating_value, readonly, onClick, average, totalReviews}) => {
+const RatingComponent = ({rating_value, readonly, onClick, average, totalReviews, showTooltip, size}) => {
     const tooltipArray = [
         'Terrible',
         'Terrible+',
@@ -37,11 +37,11 @@ const RatingComponent = ({rating_value, readonly, onClick, average, totalReviews
             <Rating
                 onClick={handleRating}
                 ratingValue={rating_value}
-                size={24}
+                size={size ? size : 24}
                 transition
                 allowHalfIcon
                 readonly={readonly}
-                showTooltip
+                showTooltip={showTooltip}
                 tooltipArray={tooltipArray}
                 fillColorArray={fillColorArray}
             />

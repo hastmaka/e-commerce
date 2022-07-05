@@ -16,8 +16,12 @@ module.exports = {
     productAll(req, res) {
         models.product.findAll({
             include: [
-                {
-                    model: models.image,
+                {model: models.review,
+                    attributes: [
+                        [Sequelize.fn('AVG', Sequelize.col('review_rating')), 'average'],
+                    ],
+                },
+                {model: models.image,
                     where: {
                         image_main: {
                             [Op.eq]: true
@@ -63,37 +67,37 @@ module.exports = {
             ],
 
         }).then(result => {
-            let sizes = result.sizes;
-            let promises = [];
-            for (let size of sizes) {
-                promises.push(models.product_size_map.findAll({
-                    where: {
-                        product_product_id: {
-                            [Op.eq]: req.params.id
-                        },
-                        size_size_id: {
-                            [Op.eq]: size.size_id
+                let sizes = result.sizes;
+                let promises = [];
+                for (let size of sizes) {
+                    promises.push(models.product_size_map.findAll({
+                        where: {
+                            product_product_id: {
+                                [Op.eq]: req.params.id
+                            },
+                            size_size_id: {
+                                [Op.eq]: size.size_id
+                            }
                         }
-                    }
-                }))
-            }
-            Promise.all(promises)
-                .then(colors => {
-                    for (let i in result.sizes) {
-                        result.sizes[i].dataValues.colors = colors[i];
-                        result.sizes[i].dataValues.active = (parseInt(i) === 0);
-                    }
-                    res.json(handleDataToReturn(result));
-                })
+                    }))
+                }
+                Promise.all(promises)
+                    .then(colors => {
+                        for (let i in result.sizes) {
+                            result.sizes[i].dataValues.colors = colors[i];
+                            result.sizes[i].dataValues.active = (parseInt(i) === 0);
+                        }
+                        res.json(handleDataToReturn(result));
+                    })
 
-                .catch((error) => {
-                    res.status(400);
-                    res.json({
-                        status: 400,
-                        message: error.message,
-                        success: false
+                    .catch((error) => {
+                        res.status(400);
+                        res.json({
+                            status: 400,
+                            message: error.message,
+                            success: false
+                        });
                     });
-                });
             }
         ).catch(err => {
             console.log(err);

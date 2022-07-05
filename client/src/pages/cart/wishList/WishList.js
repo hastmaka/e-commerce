@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 
 const WishList = () => {
     const wishList = useSelector(store => store.cart.wishList);
-    // debugger
+    debugger
     return (
         <>
             <div className={classes['cart-table']}>
@@ -21,7 +21,7 @@ const WishList = () => {
                     <tbody>
                     {wishList?.map(item =>
                         <Tr
-                            key={item.cart_id}
+                            key={item.order_id}
                             imageUrl={item.image.image_url}
                             size={item.size.size_name}
                             color={item.color_color_id}

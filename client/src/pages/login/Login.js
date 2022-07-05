@@ -7,8 +7,8 @@ import {useForm} from 'react-hook-form';
 /* firebase */
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
 import {loginSliceActions} from './login-slice';
-import {fetchData} from "../../helper/Api";
 import {cartSliceActions} from "../cart/cart-slice";
+import {fetchData} from "../../helper/Api";
 import Button from "../../component/button/Button";
 import Input from "../../component/input/Input";
 
@@ -37,6 +37,7 @@ const Login = () => {
     });
 
     const onSubmit = ({email, password}) => {
+        // debugger
         const authentication = getAuth();
         dispatch(loginSliceActions.isLoadingToggle());
         signInWithEmailAndPassword(authentication, email, password).then(res => {
@@ -83,7 +84,6 @@ const Login = () => {
                         patternErrorMessage={item.message}
                         minLengthValue={item.minLengthValue}
                         minLengthMessage={item.minLengthMessage}
-
                     />
                 )}
                 <div className={classes['login-form-fields-links']}>

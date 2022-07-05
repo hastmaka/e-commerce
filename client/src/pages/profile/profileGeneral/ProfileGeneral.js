@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import classes from "./ProfileGeneral.module.css";
+import classes from "./ProfileGeneral.module.scss";
 import {useState} from "react";
 import ModalComponent from "../../../component/modal/ModalComponent";
 import Button from "../../../component/button/Button";
@@ -10,19 +10,19 @@ const ProfileGeneral = () => {
     const [showModal, setShowModal] = useState(false);
     const user = useSelector(store => store.login.user);
     const items = [{
-        name: 'name',
+        name: 'Name',
         value: `${user.user_first_name} ${user.user_last_name}`,
         disabled: true
     }, {
-        name: 'email',
+        name: 'Email',
         value: user.user_email,
         disabled: true
     }, {
-        name: 'phone',
+        name: 'Phone',
         value: user.user_phone,
         disabled: false
     }, {
-        name: 'address',
+        name: 'Address',
         value: user.user_address,
         disabled: false
     }];

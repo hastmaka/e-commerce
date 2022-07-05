@@ -2,7 +2,7 @@ import {useForm} from 'react-hook-form';
 import global from "../../../login/Login.module.scss";
 import classes from './Review.module.css';
 import MessageCard from "./MessageCard";
-import RatingComponent from "./RatingComponent";
+import RatingComponent from "../../../../component/rating/RatingComponent";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {detailProductSliceActions} from "../../DetailProduct-slice";
@@ -66,6 +66,7 @@ const Review = () => {
             <form onSubmit={handleSubmit(onSubmit)} className={classes['review-form']}>
                 <h1>Leave You Review</h1>
                 <RatingComponent
+                    showTooltip={true}
                     onClick={handleClick}
                     rating_value={ratingDefault}
                     readonly={false}

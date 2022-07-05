@@ -1,5 +1,5 @@
 import classes from './MessageCard.module.css';
-import RatingComponent from "./RatingComponent";
+import RatingComponent from "../../../../component/rating/RatingComponent";
 
 const MessageCard = ({rating, email, message, createdAt}) => {
     const fixedDate = new Date(createdAt).toString().slice(0, 21);

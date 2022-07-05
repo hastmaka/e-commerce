@@ -1,4 +1,4 @@
-@use '../../../../../../test/src/index';
+@use 'src/scss/index';
 
 .order-complete-container {
     @include index.displayFlex(column, center, center);

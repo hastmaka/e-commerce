@@ -5,7 +5,7 @@ const {handleDataToReturn, errorHandler} = require("../helpers/helpers");
 
 
 module.exports = {
-    cartId(req, res) {
+    orderId(req, res) {
         if (!req.params.id) {
             return res.json({
                 status: 400,
@@ -25,11 +25,11 @@ module.exports = {
                 res.json(handleDataToReturn(result))
             }
         ).catch(err => {
-          errorHandler(400, err.message, res)
+            errorHandler(400, err.message, res)
         })
     },
 
-    cartAll(req, res) {
+    orderAll(req, res) {
         if (!req.params.user_user_id) {
             return res.json({
                 status: 400,
@@ -101,8 +101,8 @@ module.exports = {
                     {cart_product_quantity: cart_product_quantity + req_cart_product_quantity},
                     {
                         where: {
-                            cart_id: {
-                                [Op.eq]: result.cart_id
+                            order_id: {
+                                [Op.eq]: result.order_id
                             }
                         }
                     }
@@ -150,25 +150,25 @@ module.exports = {
     //
     // },
     //
-    // delete: function (req, res) {
-    //   if (!req.params.id) {
-    //     return res.json({
-    //       status: 400,
-    //       message: 'Missing Arguments',
-    //       success: false
-    //     });
-    //   }
-    //
-    //   models.link.destroy({
-    //     where: {
-    //       link_id: req.params.id
-    //     }
-    //   })
-    //     .then((result) => {
-    //       res.json(handleDataToReturn(result))
-    //     })
-    //     .catch(err => {
-    //       console.log(err)
-    //     })
-    // },
+    delete: function (req, res) {
+        if (!req.params.order_id) {
+            return res.json({
+                status: 400,
+                message: 'Missing Arguments',
+                success: false
+            });
+        }
+
+        models.order.destroy({
+            where: {
+                order_id: req.params.order_id
+            }
+        })
+            .then(result => {
+                res.json(handleDataToReturn(result))
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    },
 };

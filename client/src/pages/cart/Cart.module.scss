@@ -1,4 +1,4 @@
-@use '../../../../../test/src/index';
+@use 'src/scss/index';
 
 .cart-container {
     @include index.displayFlex(null, center, null);
@@ -11,18 +11,20 @@
 
         .cart-header {
             @include index.displayFlex(row, center, center);
-
             height: 80px;
-            width: 100%;
-            padding: 15px;
+            margin: 10px;
+            background: var(--bgColor);
+            h4 {
+                @include index.h4
+            }
         }
 
 
         ul {
             @include index.displayFlex(row, center, center);
-            gap: 20px;
+            gap: 10px;
             margin: 10px 10px 0 10px;
-            padding: 0 0 20px 0;
+            padding: 0 0 10px 0;
         }
 
         .cart-outlet-container {
