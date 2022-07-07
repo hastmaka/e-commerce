@@ -5,6 +5,7 @@ const cartSlice = createSlice({
     initialState: {
         items: [],
         wishList: [],
+        orderComplete: [],
         productQuantity: [],
         totalQuantity: 0,
         totalPrice: 0,
@@ -14,15 +15,16 @@ const cartSlice = createSlice({
             // debugger
             let { total, quantity, productQuantity } = action.payload.data.reduce(
                 (tempData, currentItem) => {
-                    const { product, cart_product_quantity } = currentItem;
+                    debugger
+                    const { product, cart_product_quantity, order_type } = currentItem;
                     tempData.productQuantity.push({
                         id: product.product_id,
                         title: product.product_name,
                         price: product.product_price,
                         quantity: cart_product_quantity
                     })
-                    tempData.total += product.product_price * cart_product_quantity;
-                    tempData.quantity += cart_product_quantity;
+                    tempData.total += (order_type === 1) ? product.product_price * cart_product_quantity : 0;
+                    tempData.quantity += (order_type === 1) ? cart_product_quantity : 0;
                     return tempData;
                 },{
                     /* tempData */
@@ -33,12 +35,12 @@ const cartSlice = createSlice({
             );
             state.totalQuantity = quantity;
             state.totalPrice = total;
-            state.items = action.payload.data;
             //"[1] Cart [2] WishList [3] Completed Orders"
+            state.items = action.payload.data.filter(item => item.order_type === 1);
             state.wishList = action.payload.data.filter(item => item.order_type === 2);
+            state.orderComplete = action.payload.data.filter(item => item.order_type === 3);
             state.productQuantity = productQuantity.reduce((acc, curr) => {
                 let findIndex = acc.findIndex(item => item.id === curr.id);
-
                 if (findIndex === -1) {
                     acc.push(curr)
                 } else {
