@@ -1,88 +1,93 @@
 @use 'src/scss/index';
 
-.user-profile-bg {
-    @include index.displayFlex(column, center, null);
-    width: 100%;
+.user-profile-container {
+    @include index.displayFlex(null, center, null);
     background: var(--baseBgColor);
 
-    .user-profile-title {
-        @include index.displayFlex(row, center, center);
-        background: var(--bgColor);
-        padding: 10px 10px;
-        margin: 10px 10px 0 10px;
-        height: 80px;
-        h4 {
-            @include index.h4
-        }
-    }
-
-    .user-profile-content {
-        @include index.displayFlex(row, null, null);
-        background: var(--baseBgColor);
-        padding: 10px 10px;
+    .user-profile-container-fix {
         max-width: var(--max-width);
-        gap: 10px;
+        width: 100%;
 
-        .user-profile-left {
-            @include index.displayFlex(column, flex-start, null);
-            width: 250px;
-            margin-bottom: 0;
-            padding: 0;
-            list-style-type: none;
+        .user-profile-title {
+            @include index.displayFlex(row, center, center);
+            background: var(--bgColor);
+            padding: 10px 10px;
+            margin: 10px 10px 0 10px;
+            height: 80px;
 
-            li {
-                position: relative;
-                z-index: 15;
-                width: 100%;
-                background: #fff;
-                cursor: pointer;
-                border: 1px solid var(--border);
-                transition: .5s;
-
-                a {
-                    position: relative;
-                    z-index: 16;
-                    display: block;
-                    padding: 10px;
-                    text-decoration: none;
-                    font-size: 14px;
-                    color: #2f2f2f;
-                    transition: .5s;
-                }
-
-                .active {
-                    color: var(--swatch_6);
-                }
-
-                &:hover {
-                    background: var(--swatch_10);
-
-                    a {
-                        color: #eaeaea;
-                        padding-left: 10px;
-                    }
-                }
+            h4 {
+                @include index.h4
             }
         }
 
-        .user-profile-right {
-            padding: 15px;
-            width: 100%;
-            background: var(--bgColor);
-        }
+        .user-profile-content {
+            @include index.displayFlex(row, null, null);
+            background: var(--baseBgColor);
+            padding: 10px 10px;
+            max-width: var(--max-width);
+            gap: 10px;
 
-        .user-profile-right div + div {
-            margin-top: 8px;
-        }
+            .user-profile-left {
+                @include index.displayFlex(column, flex-start, null);
+                width: 250px;
+                margin-bottom: 0;
+                padding: 0;
+                list-style-type: none;
 
-        .user-profile-cards div {
-            @include index.displayFlex(null, center, center);
-            border: 1px solid var(--border);
-            border-radius: 5px;
-            padding: 20px;
-            width: 250px;
-        }
+                li {
+                    position: relative;
+                    z-index: 15;
+                    width: 100%;
+                    background: #fff;
+                    cursor: pointer;
+                    border: 1px solid var(--border);
+                    transition: .5s;
 
+                    a {
+                        position: relative;
+                        z-index: 16;
+                        display: block;
+                        padding: 10px;
+                        text-decoration: none;
+                        font-size: 14px;
+                        color: #2f2f2f;
+                        transition: .5s;
+                    }
+
+                    .active {
+                        color: var(--swatch_6);
+                    }
+
+                    &:hover {
+                        background: var(--swatch_10);
+
+                        a {
+                            color: #eaeaea;
+                            padding-left: 10px;
+                        }
+                    }
+                }
+            }
+
+            .user-profile-right {
+                padding: 15px;
+                width: 100%;
+                background: var(--bgColor);
+            }
+
+            .user-profile-right div + div {
+                margin-top: 8px;
+            }
+
+            .user-profile-cards div {
+                @include index.displayFlex(null, center, center);
+                border: 1px solid var(--border);
+                border-radius: 5px;
+                padding: 20px;
+                width: 250px;
+            }
+
+        }
     }
 }
 

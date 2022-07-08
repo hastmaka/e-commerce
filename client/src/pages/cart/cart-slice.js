@@ -15,7 +15,7 @@ const cartSlice = createSlice({
             // debugger
             let { total, quantity, productQuantity } = action.payload.data.reduce(
                 (tempData, currentItem) => {
-                    debugger
+                    // debugger
                     const { product, cart_product_quantity, order_type } = currentItem;
                     tempData.productQuantity.push({
                         id: product.product_id,
@@ -125,10 +125,9 @@ const cartSlice = createSlice({
         },
 
         cartQuantity(state, action) {
-            // debugger
             state.totalQuantity = 0;
             for (let item of action.payload.data) {
-                state.totalQuantity += item.cart_product_quantity;
+                state.totalQuantity += (item.order_type === 1) ? item.cart_product_quantity : 0;
             }
         }
     }
